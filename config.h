@@ -18,11 +18,20 @@ typedef int16_t   i16;
 
 #define F_CPU 8000000Lu
 
-#define	QT_TASK_COUNT	    10	
+
+//#define MODE              M_SNR
+//#define MODE              M_ADC
+#define MODE              M_MIX
+#define M_SNR             1
+#define M_ADC             2
+#define M_MIX             3
+
+#define	QT_TASK_COUNT	    10
 
 #define QT_DELAY_SIZE_16
 
-#define UART_BAUD_RATE      38400
+//#define UART_BAUD_RATE    UART_BAUD_SELECT(38400, F_CPU)
+#define UART_BAUD_RATE    UART_BAUD_SELECT_DOUBLE_SPEED(38400, F_CPU)
 
 #include "itoa.h"
 #include "dispatcher.h"

@@ -19,6 +19,6 @@
 @REM 
 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.0\common\bin\cspybat" "C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.0\avr\bin\avrproc.dll" "C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.0\avr\bin\avrsim.dll"  %1 --plugin "C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.0\avr\bin\avrlibsupportbat.dll" --backend -B "--cpu=m8" "--enhanced_core" "-p" "C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.0\avr\Config\iom8.ddf" "--eeprom_size" "512" "-d" "sim" 
+"C:\iar\common\bin\cspybat" "C:\iar\avr\bin\avrproc.dll" "C:\iar\avr\bin\avrJtagIce-mkII.dll"  %1 --plugin "C:\iar\avr\bin\avrlibsupportbat.dll" --backend -B "--cpu=m8" "--enhanced_core" "-p" "C:\iar\avr\Config\iom8.ddf" "--eeprom_size" "512" "-d" "jtagIceMkII" "--drv_dragon" "--drv_communication_log" "cspycomm.log" "--jtagice_clock=100000" "--jtagice_leave_timers_running" "--jtagice_do_hardware_reset" "--drv_communication=USB" 
 
 

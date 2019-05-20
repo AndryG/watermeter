@@ -200,7 +200,8 @@ extern void uart1_puts(const char *s );
 /** @brief  Put string from program memory to ringbuffer for transmitting via USART1 (only available on selected ATmega) @see uart_puts_p */
 extern void uart1_puts_p(const char *s );
 /** @brief  Macro to automatically put a string constant into program memory */
-#define uart1_puts_P(__s)       uart1_puts_p(PSTR(__s))
+//#define uart1_puts_P(__s)       uart1_puts_p(PSTR(__s))
+#define uart_puts_P(s)        {static __flash char str[] = s; uart1_puts_p(str);}
 
 /**@}*/
 

@@ -2,47 +2,91 @@
 
 <Workspace>
   <ConfigDictionary>
-    
-  <CurrentConfigs><Project>pulse/Debug</Project></CurrentConfigs></ConfigDictionary>
+    <CurrentConfigs/>
+  </ConfigDictionary>
   <Desktop>
     <Static>
       <Workspace>
         <ColumnWidths>
-          
-          
-          
-          
-        <Column0>179</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+          <Column0>124</Column0>
+          <Column1>27</Column1>
+          <Column2>27</Column2>
+          <Column3>27</Column3>
+        </ColumnWidths>
       </Workspace>
-    <Build><ColumnWidth0>20</ColumnWidth0><ColumnWidth1>983</ColumnWidth1><ColumnWidth2>262</ColumnWidth2><ColumnWidth3>65</ColumnWidth3></Build></Static>
+    </Static>
     <Windows>
-      
-    <Wnd2>
+      <Wnd0>
         <Tabs>
           <Tab>
-            <Identity>TabID-27322-10062</Identity>
+            <Identity>TabID-16366-8690</Identity>
             <TabName>Workspace</TabName>
             <Factory>Workspace</Factory>
             <Session>
-              
-            <NodeDict><ExpandedNode>pulse</ExpandedNode></NodeDict></Session>
+              <NodeDict/>
+            </Session>
           </Tab>
         </Tabs>
-        
-      <SelectedTab>0</SelectedTab></Wnd2><Wnd3><Tabs><Tab><Identity>TabID-30229-10212</Identity><TabName>Build</TabName><Factory>Build</Factory><Session/></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd3></Windows>
+        <SelectedTab>0</SelectedTab>
+      </Wnd0>
+    </Windows>
     <Editor>
-      
-      
-      
-      
-    <Pane/><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+      <Pane/>
+      <ActivePane>0</ActivePane>
+      <Sizes>
+        <Pane>
+          <X>1000000</X>
+          <Y>1000000</Y>
+        </Pane>
+      </Sizes>
+      <SplitMode>1</SplitMode>
+    </Editor>
     <Positions>
-      
-      
-      
-      
-      
-    <Top><Row0><Sizes><Toolbar-0030a798><key>iaridepm.enu1</key></Toolbar-0030a798></Sizes></Row0></Top><Left><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>529</Bottom><Right>253</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>145985</sizeHorzCX><sizeHorzCY>259067</sizeHorzCY><sizeVertCX>186131</sizeVertCX><sizeVertCY>687824</sizeVertCY></Rect></Wnd2></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>198</Bottom><Right>1372</Right><x>-2</x><y>-2</y><xscreen>1374</xscreen><yscreen>200</yscreen><sizeHorzCX>1002920</sizeHorzCX><sizeHorzCY>259067</sizeHorzCY><sizeVertCX>145985</sizeVertCX><sizeVertCY>259067</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+      <Top>
+        <Row0>
+          <Sizes>
+            <Toolbar-00ef6fc8>
+              <key>iaridepm.enu1</key>
+            </Toolbar-00ef6fc8>
+          </Sizes>
+        </Row0>
+      </Top>
+      <Left>
+        <Row0>
+          <Sizes>
+            <Wnd0>
+              <Rect>
+                <Top>-2</Top>
+                <Left>-2</Left>
+                <Bottom>908</Bottom>
+                <Right>198</Right>
+                <x>-2</x>
+                <y>-2</y>
+                <xscreen>200</xscreen>
+                <yscreen>200</yscreen>
+                <sizeHorzCX>120773</sizeHorzCX>
+                <sizeHorzCY>209205</sizeHorzCY>
+                <sizeVertCX>120773</sizeVertCX>
+                <sizeVertCY>951883</sizeVertCY>
+              </Rect>
+            </Wnd0>
+          </Sizes>
+        </Row0>
+      </Left>
+      <Right>
+        <Row0>
+          <Sizes/>
+        </Row0>
+      </Right>
+      <Bottom>
+        <Row0>
+          <Sizes/>
+        </Row0>
+      </Bottom>
+      <Float>
+        <Sizes/>
+      </Float>
+    </Positions>
   </Desktop>
 </Workspace>
 

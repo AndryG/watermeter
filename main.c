@@ -1,9 +1,9 @@
 #include "config.h"
 
 volatile uint8_t flag;
-#define F_TICK        0x01 // системный тик
-#define F_SNR_READY   0x02 // таймер "данные сенсора  готовы"
-#define F_DSK_IMPULS  0x20 // "новый импульс с диска"
+#define F_TICK        0x01 // СЃРёСЃС‚РµРјРЅС‹Р№ С‚РёРє
+#define F_SNR_READY   0x02 // С‚Р°Р№РјРµСЂ "РґР°РЅРЅС‹Рµ СЃРµРЅСЃРѕСЂР°  РіРѕС‚РѕРІС‹"
+#define F_DSK_IMPULS  0x20 // "РЅРѕРІС‹Р№ РёРјРїСѓР»СЊСЃ СЃ РґРёСЃРєР°"
 
 volatile uint8_t snrValue;
 
@@ -18,8 +18,6 @@ void kbdProcess();
 
 int main(){
   init();
-//  qtTask(snrStart, 1);
-  qtTask(adcStart, 2);
   __enable_interrupt();
   while(1){
     if(flag & F_TICK){
@@ -35,13 +33,79 @@ int main(){
         delay_ms(50);
         PORTD_Bit7 = 0;
       }
+#if MODE == M_SNR
       snrReady();
+#elif MODE == M_MIX
+      adcStart();
+#else
+  #error "Unknown MODE"
+#endif
     }
     qtDispatch();
   }
 }
 
-/*Отправить в COM порт цифровые значения */
+void init(){
+  TIMSK  = (0<<OCIE2)|(0<<TOIE2)|(0<<TICIE1)|(0<<OCIE1A)|(0<<OCIE1B)|(0<<TOIE1)|(1<<TOIE0);
+  //TODO РѕС‚РєР»СЋС‡РёС‚СЊ РєРѕРјРїР°СЂР°С‚РѕСЂ
+  DDRB_Bit2 = 1; // snrLight
+  DDRC_Bit3 = 1; // snrSensor
+
+  /* РґРµР±Р°Р¶РЅС‹Рµ С€С‚СѓРєРё */
+
+  DDRD |= 0xF0;    // debug output PORTD_Bit4-7
+
+  qtInit();
+  TCCR1B = (0<<WGM13)|(1<<ICNC1)|(1<<ICES1)|(0<<WGM12)|(0<<CS12)|(1<<CS11)|(0<<CS10); // С‚Р°Р№РјРµСЂ
+  TIMSK |= _BV(OCIE1A);   // qt timer
+
+
+  PORTB |= 0xF0;   // buttons
+  qtTask(kbdProcess, 0);
+
+#if MODE == M_ADC
+  qtTask(adcInit, 0);
+  snrLight(true);
+  snrSensor(true);
+  qtTask(adcStart, 2);
+#elif MODE == M_SNR
+  qtTask(snrStart, 1);
+#elif MODE == M_MIX
+  qtTask(adcInit, 0);
+  qtTask(snrStart, 1);
+#else
+  #error "Unknown MODE value"
+#endif
+
+  uart_init(UART_BAUD_RATE); // UART
+
+  pwmPower(0xff);
+
+}
+
+// Р·Р°РїСѓСЃС‚РёС‚СЊ С†РёС„СЂРѕРІРѕРµ СЃС‡РёС‚С‹РІР°РЅРёРµ РґР°С‚С‡РёРєР°
+void snrStart(){
+  qtTask(snrStart, 1);
+  // СЃРІРµС‚, РґР°С‚С‡РёРє, С‚Р°Р№РјРµСЂ
+  snrLight(true);
+  snrSensor(true);
+  TCNT0 = 0xC2; // 496us
+  TCCR0 = (0<<CS12)|(1<<CS11)|(1<<CS10);
+}
+
+#pragma vector=TIMER0_OVF_vect
+__interrupt void TIMER0_OVF(){
+  // РїРѕРєР°Р·Р°РЅРёСЏ, СЃРІРµС‚, СЃРµРЅСЃРѕСЂ, С‚Р°Р№РјРµСЂ, flag
+  snrValue = PINC & 0x07;
+#if MODE == M_SNR
+  snrLight(false);
+  snrSensor(false);
+#endif
+  TCCR0 = 0; // РѕСЃС‚Р°РЅРѕРІ С‚Р°Р№РјРµСЂР°
+  flag |= F_SNR_READY;
+}
+
+/*РћС‚РїСЂР°РІРёС‚СЊ РІ COM РїРѕСЂС‚ С†РёС„СЂРѕРІС‹Рµ Р·РЅР°С‡РµРЅРёСЏ */
 void snrReady(){
   char buf[5];
   uart_putc(snrValue & 0x01 ? '1' : '0');
@@ -52,55 +116,12 @@ void snrReady(){
   uart_putc(' ');/**/
   uart_puts(itoa16(snrValue, buf));
 //  uart_puts(itoa16(dskSameCnt, buf));
+#if MODE == M_SNR
   uart_putc('\r');
+#endif
 }
 
-void init(){
-  TIMSK  = (0<<OCIE2)|(0<<TOIE2)|(0<<TICIE1)|(0<<OCIE1A)|(0<<OCIE1B)|(0<<TOIE1)|(1<<TOIE0);
-  //TODO отключить компаратор
-  DDRB_Bit2 = 1; // snrLight
-  DDRC_Bit3 = 1; // snrSensor
-
-  /* дебажные штуки */
-
-  DDRD |= 0xF0;    // debug output PORTD_Bit4-7
-
-  qtInit();
-  TCCR1B = (0<<WGM13)|(1<<ICNC1)|(1<<ICES1)|(0<<WGM12)|(0<<CS12)|(1<<CS11)|(0<<CS10); // таймер
-  TIMSK |= _BV(OCIE1A);   // qt timer
-
-  PORTB |= 0xF0;   // buttons
-  qtTask(kbdProcess, 0);
-
-  qtTask(adcInit, 0);
-
-  uart_init(UART_BAUD_SELECT(UART_BAUD_RATE,F_CPU)); // UART
-
-  pwmPower(0xff);
-
-}
-
-// запустить цифровое считывание датчика
-void snrStart(){
-  qtTask(snrStart, 1); // 250ms
-  // свет, датчик, таймер
-  snrLight(true);
-  snrSensor(true);
-  TCNT0 = 0xC2; // 496us
-  TCCR0 = (0<<CS12)|(1<<CS11)|(1<<CS10);
-}
-
-#pragma vector=TIMER0_OVF_vect
-__interrupt void TIMER0_OVF(){
-  // показания, свет, сенсор, таймер, flag
-  snrValue = PINC & 0x07;
-  snrLight(false);
-  snrSensor(false);
-  TCCR0 = 0;
-  flag |= F_SNR_READY;
-}
-
-void kbdProcess(){ // обработка нажатия кнопок
+void kbdProcess(){ // РѕР±СЂР°Р±РѕС‚РєР° РЅР°Р¶Р°С‚РёСЏ РєРЅРѕРїРѕРє
   kbd_process(__swap_nibbles(PINB));
   qtTask(kbdProcess, 5);
   if(kbd_state & KBD_0){ pwmMinus(10);}
@@ -110,16 +131,31 @@ void kbdProcess(){ // обработка нажатия кнопок
   kbd_state = 0;
 }
 
-/* Передача в COM порт ADC значений */
+/* РџРµСЂРµРґР°С‡Р° РІ COM РїРѕСЂС‚ ADC Р·РЅР°С‡РµРЅРёР№ */
 void adcComplete(){
+#if MODE == M_ADC
   qtTask(adcStart, 2);
+#elif MODE == M_MIX
+ // snrLight(false);
+ // snrSensor(false);
+#endif
   char buf[7];
-  uint8_t i = sizeof adcChannel - 1;
-
-  do{
+  for(u8 i = 0; i < sizeof(adcChannel); i += 1){
     uart_puts(itoa16(adcValue[i], buf));
     uart_putc(' ');
-  }while(i-- > 0);
+  }
+//
+//  uint8_t i = sizeof adcChannel - 1;
+//  do{
+//    uart_puts(itoa16(adcValue[i], buf));
+//    uart_putc(' ');
+//  }while(i-- > 0);
+#if MODE == M_MIX
+  snrReady();
+#else
+  uart_putc('0');
+  uart_putc(' ');
+#endif
 /*  i = sizeof adcChannel - 1;
   do{
     uart_puts(itoa16(1023 - adcValue[i], buf));
@@ -129,13 +165,15 @@ void adcComplete(){
   uart_putc('\r');
 }
 
-/** Отсчет системных тиков */
+/** РћС‚СЃС‡РµС‚ СЃРёСЃС‚РµРјРЅС‹С… С‚РёРєРѕРІ */
 #pragma vector=TIMER1_COMPA_vect
 __interrupt void TIMER1_COMPA(){
-//  OCR1A += 0x1387; // 5ms
-  OCR1A += 0x0BB7; // 3ms
-//  OCR1A += 0x07CF; // 2ms
-//  OCR1A += 0x03E7; // 1ms
+
+//  OCR1A += 0x270F; // 10ms
+  OCR1A += 0x1387; // 5ms
+// OCR1A += 0x0BB7; // 3ms
+  //OCR1A += 0x07CF; // 2ms
+  //OCR1A += 0x03E7; // 1ms
   flag |= F_TICK;
 }
 //----------------------------------------------------
@@ -187,48 +225,48 @@ void snrInit(){
   qtTask(snrStart2, 0);
 }
 /*
-Запуск считывания датчика:
- включить свет, запустить таймер, включить заряд, конф. вход сенсора
+Р—Р°РїСѓСЃРє СЃС‡РёС‚С‹РІР°РЅРёСЏ РґР°С‚С‡РёРєР°:
+ РІРєР»СЋС‡РёС‚СЊ СЃРІРµС‚, Р·Р°РїСѓСЃС‚РёС‚СЊ С‚Р°Р№РјРµСЂ, РІРєР»СЋС‡РёС‚СЊ Р·Р°СЂСЏРґ, РєРѕРЅС„. РІС…РѕРґ СЃРµРЅСЃРѕСЂР°
 * /
 void snrStart2(){
   qtTask(snrStart2, 3);
- // PORTB_Bit2 = 1; // свет
+ // PORTB_Bit2 = 1; // СЃРІРµС‚
   delay_us(10);
-  // флаги свет заряд вход таймер
-  PORTB_Bit1 = 1; // заряд
+  // С„Р»Р°РіРё СЃРІРµС‚ Р·Р°СЂСЏРґ РІС…РѕРґ С‚Р°Р№РјРµСЂ
+  PORTB_Bit1 = 1; // Р·Р°СЂСЏРґ
   if((kbd_ss & KBD_3) == 0){
     delay_us(2000);
   }
-  PORTB_Bit2 = 1; // свет
+  PORTB_Bit2 = 1; // СЃРІРµС‚
   delay_us(2000);
   PORTB_Bit1 = 0;
   PORTB_Bit2 = 0;
 }
 void snrStart3(){
-  // флаги свет заряд вход таймер
-  PORTB_Bit1 = 1; // заряд
+  // С„Р»Р°РіРё СЃРІРµС‚ Р·Р°СЂСЏРґ РІС…РѕРґ С‚Р°Р№РјРµСЂ
+  PORTB_Bit1 = 1; // Р·Р°СЂСЏРґ
   __no_operation();
   __no_operation();
   __no_operation();
-  flag      &= ~(F_SNR_TMR | F_SNR_CPT | F_SNR_OVF); // флаги
-  DDRB_Bit0  = 0; // сенсор вход
-  PORTB_Bit2 = 1; // свет
+  flag      &= ~(F_SNR_TMR | F_SNR_CPT | F_SNR_OVF); // С„Р»Р°РіРё
+  DDRB_Bit0  = 0; // СЃРµРЅСЃРѕСЂ РІС…РѕРґ
+  PORTB_Bit2 = 1; // СЃРІРµС‚
   TCNT1      = 0;
-  TCCR1B     = (0<<WGM13)|(1<<ICNC1)|(1<<ICES1)|(0<<WGM12)|(0<<CS12)|(0<<CS11)|(1<<CS10); // таймер
+  TCCR1B     = (0<<WGM13)|(1<<ICNC1)|(1<<ICES1)|(0<<WGM12)|(0<<CS12)|(0<<CS11)|(1<<CS10); // С‚Р°Р№РјРµСЂ
   tcntVal    = 0;
   qtTask(snrStart, 25);
 }
 
 
 void snrTime(){
-  // показания, свет, таймер, откл.заряд, разряд
-//  snrVal     = PINB_Bit0; // показания
-  snrVal    += 1; // показания
-  PORTB_Bit2 = 0;         // свет
-  TCCR1B    &= 0x07;      // таймер
-  PORTB_Bit1 = 0;         //откл.заряд
-  DDRB_Bit0  = 1;         // разряд
-  flag      |= F_SNR_TMR; // флаг
+  // РїРѕРєР°Р·Р°РЅРёСЏ, СЃРІРµС‚, С‚Р°Р№РјРµСЂ, РѕС‚РєР».Р·Р°СЂСЏРґ, СЂР°Р·СЂСЏРґ
+//  snrVal     = PINB_Bit0; // РїРѕРєР°Р·Р°РЅРёСЏ
+  snrVal    += 1; // РїРѕРєР°Р·Р°РЅРёСЏ
+  PORTB_Bit2 = 0;         // СЃРІРµС‚
+  TCCR1B    &= 0x07;      // С‚Р°Р№РјРµСЂ
+  PORTB_Bit1 = 0;         //РѕС‚РєР».Р·Р°СЂСЏРґ
+  DDRB_Bit0  = 1;         // СЂР°Р·СЂСЏРґ
+  flag      |= F_SNR_TMR; // С„Р»Р°Рі
 }
 
 void snrReady(){
@@ -244,9 +282,9 @@ void t1Start();
 #define M_CHARGE       0x38
 #define M_INPUT        0x07
 
-volatile uint8_t inp; // считанные значения с датчиков
+volatile uint8_t inp; // СЃС‡РёС‚Р°РЅРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ СЃ РґР°С‚С‡РёРєРѕРІ
 
-// запуск считывания датчиков
+// Р·Р°РїСѓСЃРє СЃС‡РёС‚С‹РІР°РЅРёСЏ РґР°С‚С‡РёРєРѕРІ
 void tReadStart(){
   PORTD_Bit4 = 1;
   t1Start();
@@ -264,14 +302,14 @@ void t1Start(){
   TCNT1  = 0;
   OCR1A  = 0x289F; // 1300us
   TCCR1B = (0<<WGM13)|(0<<ICNC1)|(1<<ICES1)|(0<<WGM12)|(0<<CS12)|(0<<CS11)|(1<<CS10);
-  // заряд
+  // Р·Р°СЂСЏРґ
   PORTC  = M_CHARGE;
   DDRC   = M_CHARGE;
 }
 
 void t1Stop(){
   TCCR1B &= 0x07;
-  // разряд
+  // СЂР°Р·СЂСЏРґ
   PORTC  = 0;
   DDRC   = M_INPUT;
 }* /
@@ -306,7 +344,7 @@ __interrupt void TIMER1_COMPA(){
   qtInit();
   qtTask(tReadStart, 0);
   //
-  DDRD  = 0xF0; // светики
+  DDRD  = 0xF0; // СЃРІРµС‚РёРєРё
   // Timer
   TCCR0  = (0<<CS02)|(1<<CS01)|(1<<CS00);
   TCCR1A = (0<<WGM11)|(0<<WGM10)|(0<<COM1A1)|(0<<COM1A0)|(0<<COM1B1)|(0<<COM1B0)|(0<<FOC1A)|(0<<FOC1B);

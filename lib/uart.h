@@ -201,7 +201,7 @@ extern void uart1_puts(const char *s );
 extern void uart1_puts_p(const char *s );
 /** @brief  Macro to automatically put a string constant into program memory */
 //#define uart1_puts_P(__s)       uart1_puts_p(PSTR(__s))
-#define uart_puts_P(s)        {static __flash char str[] = s; uart1_puts_p(str);}
+#define uart1_puts_P(s)        {static __flash char str[] = s; uart1_puts_p(str);}
 
 /**@}*/
 

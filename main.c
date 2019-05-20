@@ -23,7 +23,7 @@ int main(){
     if(flag & F_TICK){
       flag &= ~F_TICK;
       PORTD_Bit4 ^= 1;
-      qtDecrementDelay();
+      qtDecrementDelay2(1);
     }
     if(flag & F_SNR_READY){
       flag &= ~F_SNR_READY;
@@ -41,7 +41,7 @@ int main(){
   #error "Unknown MODE"
 #endif
     }
-    qtDispatch();
+    qtDispatch2();
   }
 }
 

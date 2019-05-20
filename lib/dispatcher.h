@@ -5,28 +5,30 @@
 #include <stddef.h>
 #include "../config.h"
 
-// размер очереди задач (в штуках)
+// СЂР°Р·РјРµСЂ РѕС‡РµСЂРµРґРё Р·Р°РґР°С‡ (РІ С€С‚СѓРєР°С…)
 #ifndef QT_TASK_COUNT
   #error not defined QT_TASK_COUNT
 #endif
 
-// тип для задержки выполнения. Можно увеличить директивой QT_DELAY_SIZE_16 (по ум. 8 бит)
+// С‚РёРї РґР»СЏ Р·Р°РґРµСЂР¶РєРё РІС‹РїРѕР»РЅРµРЅРёСЏ. РњРѕР¶РЅРѕ СѓРІРµР»РёС‡РёС‚СЊ РґРёСЂРµРєС‚РёРІРѕР№ QT_DELAY_SIZE_16 (РїРѕ СѓРј. 8 Р±РёС‚)
 #ifdef QT_DELAY_SIZE_16
   typedef uint16_t qtDelay;
 #else
   typedef uint8_t qtDelay;
 #endif
 
-// Код выхода
+// РљРѕРґ РІС‹С…РѕРґР°
 #ifndef QT_QUEUE_OVERFLOW_CODE
   #define QT_QUEUE_OVERFLOW_CODE EXIT_FAILURE
 #endif
 
-// указатель на функцию задачи
+// СѓРєР°Р·Р°С‚РµР»СЊ РЅР° С„СѓРЅРєС†РёСЋ Р·Р°РґР°С‡Рё
 typedef void(*qtTaskPtr)(void);
 
 extern void qtDecrementDelay(void);
+extern qtDelay qtDecrementDelay2(qtDelay tick);
 extern void qtDispatch(void);
+extern uint8_t qtDispatch2(void);
 extern void qtInit(void);
 extern void qtTask(qtTaskPtr ptr, qtDelay tick);
 

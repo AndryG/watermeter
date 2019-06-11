@@ -3,7 +3,8 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <stddef.h>
-#include "../config.h"
+
+#include CONFIG_FILE
 
 // размер очереди задач (в штуках)
 #ifndef QT_TASK_COUNT
@@ -28,7 +29,7 @@ typedef void(*qtTaskPtr)(void);
 extern void qtDecrementDelay(void);
 extern qtDelay qtDecrementDelay2(qtDelay tick);
 extern void qtDispatch(void);
-extern uint8_t qtDispatch2(void);
+extern bool qtDispatch2(void);
 extern void qtInit(void);
 extern void qtTask(qtTaskPtr ptr, qtDelay tick);
 

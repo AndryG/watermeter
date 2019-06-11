@@ -31,7 +31,7 @@ void qtInit(void){
 }
 
 void qtTask(qtTaskPtr ptr, qtDelay tick){
-  Task *r = empty.h;
+  Task *r = empty.h; // Rec - эта запись окажется в хвосте delay/active
 
   if(r == NULL){ // нет свободных записей. Приплыли.
     _Exit(QT_QUEUE_OVERFLOW_CODE);
@@ -46,41 +46,50 @@ void qtTask(qtTaskPtr ptr, qtDelay tick){
     return;
   }
 
-  Task *p  = delay.h; // бегунок
+  Task *p  = delay.h; // бегунок указывает на голову delay
   Task *pp = NULL;    // "хвостик" за бегунком
-  while(p != r && tick > p->delay){
+  while(p != r && tick > p->delay){ // p != r - бегунок НЕ достиг хвоста (наша новая запись сейчас в хвосте)
     tick -= p->delay;
     pp = p;
     p = p->next;
-  }
+  } // нашли место для нашей записи (r) - между pp и p
   r->delay = tick;   // установить задержку
-  if(NULL == pp){    // head
+  // устанавливаем связь PREV -> REC
+  if(NULL == pp){    // head r - новая голова очереди
     delay.h = r;
   }else{
     pp->next = r;
   }
-  if(p != r){ // не хвост
+  // устанавливаем связь REC -> NEXT
+  if(p != r){ // новое место не в хвосте, где она сейчас, значит переносим
     p->delay -= tick;      // поправить задержку следующему
-    delay.t = oldTail;     // оторвать от хвоста
-    delay.t->next = NULL;
-    r->next = p;           // и вставить внутрь
+    delay.t = oldTail;     // восстанавливаем указатель на старый хвост (он и истается хвостом)
+    delay.t->next = NULL;  // поправляем ему указатель, что он не ссылался на r
+    r->next = p;           // и установить связь r -> next
   }
 }
 
-uint8_t qtDispatch2(void){
-  if(active.h){
-    head2tail(&active, &empty);
-    (empty.t->ptr)();
-    return 1;
-  }
-  return 0;
-}
-
+/**
+ Выполняет одну задачу из очереди "активные задачи"
+ */
 void qtDispatch(void){
   if(active.h){
     head2tail(&active, &empty);
-    (empty.t->ptr)();
+    empty.t->ptr();
   }
+}
+
+/**
+ Выполняет одну задачу из очереди "активные задачи" и возращает подтверждениие выполнения
+ @return bool
+ */
+bool qtDispatch2(void){
+  if(active.h){
+    head2tail(&active, &empty);
+    (empty.t->ptr)();
+    return true;
+  }
+  return false;
 }
 
 void qtDecrementDelay(void){
@@ -113,25 +122,6 @@ qtDelay qtDecrementDelay2(qtDelay tick){
     }
   }
   return 0;
-}
-
-qtDelay qtDecrementDelay3(qtDelay tick){
-  if(delay.h){
-    qtDelay tmp = delay.h->delay;
-    if(tick > tmp){
-      tick -= tmp;
-      delay.h->delay = 0;
-    }else{
-      delay.h->delay -= tick;
-      tick = 0;
-    }
-    while(delay.h && 0 == delay.h->delay){
-      head2tail(&delay, &active);
-    }
-  }else{
-    tick = 0;
-  }
-  return tick;
 }
 
 static void head2tail(Queue *q1, Queue *q2){

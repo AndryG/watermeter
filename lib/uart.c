@@ -366,9 +366,9 @@ static volatile unsigned char UART1_LastRxError;
 #endif
 
 
-#pragma vector = USART_RXC_vect
+#pragma vector = UART0_RECEIVE_INTERRUPT
 __interrupt void USART_RXC()
-//ISR (UART0_RECEIVE_INTERRUPT)	
+//ISR (UART0_RECEIVE_INTERRUPT)
 /*************************************************************************
 Function: UART Receive Complete interrupt
 Purpose:  called when the UART has received a character

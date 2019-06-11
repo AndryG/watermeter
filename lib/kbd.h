@@ -1,8 +1,8 @@
 #ifndef _KBD_INCLUDED_
 #define _KBD_INCLUDED_
 
-extern unsigned char kbd_ss;    //Внешний буфер клавиатуры "стабильное состояние"
-extern unsigned char kbd_state; //Внешний буфер клавиатуры "кнопки нажаты"
+extern unsigned char kbd_ss;    //Р’РЅРµС€РЅРёР№ Р±СѓС„РµСЂ РєР»Р°РІРёР°С‚СѓСЂС‹ "СЃС‚Р°Р±РёР»СЊРЅРѕРµ СЃРѕСЃС‚РѕСЏРЅРёРµ"
+extern unsigned char kbd_state; //Р’РЅРµС€РЅРёР№ Р±СѓС„РµСЂ РєР»Р°РІРёР°С‚СѓСЂС‹ "РєРЅРѕРїРєРё РЅР°Р¶Р°С‚С‹"
 #define KBD_0           0x01
 #define KBD_1           0x02
 #define KBD_2           0x04

@@ -25,15 +25,15 @@
                 </option>
                 <option>
                     <name>ExePath</name>
-                    <state>files</state>
+                    <state>pulse.out</state>
                 </option>
                 <option>
                     <name>ObjPath</name>
-                    <state>files</state>
+                    <state>pulse.out</state>
                 </option>
                 <option>
                     <name>ListPath</name>
-                    <state>files</state>
+                    <state>pulse.out</state>
                 </option>
                 <option>
                     <name>GGEnableConfig</name>
@@ -388,7 +388,7 @@
                 </option>
                 <option>
                     <name>IExtraOptions</name>
-                    <state></state>
+                    <state>-DCONFIG_FILE="$PROJ_DIR$\$PROJ_FNAME$_config.h"</state>
                 </option>
                 <option>
                     <name>IExtraOptionsCheck</name>
@@ -762,7 +762,7 @@
                 </option>
                 <option>
                     <name>XList</name>
-                    <state>1</state>
+                    <state>0</state>
                 </option>
                 <option>
                     <name>SegmentMap</name>
@@ -1043,7 +1043,7 @@
                 </option>
                 <option>
                     <name>OutputFile</name>
-                    <state></state>
+                    <state>pulse.r90</state>
                 </option>
             </data>
         </settings>
@@ -1074,6 +1074,9 @@
             <name>$PROJ_DIR$\lib\kbd.h</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\lib\lib.h</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\lib\uart.c</name>
         </file>
         <file>
@@ -1087,9 +1090,6 @@
         <name>$PROJ_DIR$\adc.h</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\config.h</name>
-    </file>
-    <file>
         <name>$PROJ_DIR$\disk.c</name>
         <excluded>
             <configuration>Debug</configuration>
@@ -1099,7 +1099,10 @@
         <name>$PROJ_DIR$\disk3a.c</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\main.c</name>
+        <name>$PROJ_DIR$\pulse.c</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\pulse_config.h</name>
     </file>
     <file>
         <name>$PROJ_DIR$\pwm.c</name>

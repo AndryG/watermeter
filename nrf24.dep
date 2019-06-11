@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <fileVersion>2</fileVersion>
+    <fileChecksum>3282289754</fileChecksum>
+    <configuration>
+        <name>Debug</name>
+        <outputs>
+            <file>$PROJ_DIR$\lib\dispatcher.c</file>
+            <file>$PROJ_DIR$\lib\dispatcher.h</file>
+            <file>$PROJ_DIR$\lib\itoa.c</file>
+            <file>$PROJ_DIR$\lib\itoa.h</file>
+            <file>$PROJ_DIR$\lib\kbd.c</file>
+            <file>$PROJ_DIR$\lib\kbd.h</file>
+            <file>$PROJ_DIR$\lib\lib.h</file>
+            <file>$PROJ_DIR$\lib\uart.c</file>
+            <file>$PROJ_DIR$\lib\uart.h</file>
+            <file>$PROJ_DIR$\nrf24.lib\src\nrf24l01-mnemonics.h</file>
+            <file>$PROJ_DIR$\nrf24.lib\src\nrf24l01.c</file>
+            <file>$PROJ_DIR$\nrf24.lib\src\nrf24l01.h</file>
+            <file>$PROJ_DIR$\nrf24.lib\examples\rx\main.c</file>
+            <file>$PROJ_DIR$\nrf24.lib\examples\tx\main.c</file>
+            <file>$PROJ_DIR$\nrf24.c</file>
+            <file>$PROJ_DIR$\nrf24_config.h</file>
+            <file>$PROJ_DIR$\nrf_register.txt</file>
+            <file>$PROJ_DIR$\nrf24.out\nrf24.d90</file>
+            <file>$PROJ_DIR$\nrf24.out\nrf24.pbd</file>
+            <file>$PROJ_DIR$\nrf24.out\nrf24l01.__cstat.et</file>
+            <file>$PROJ_DIR$\nrf24.out\nrf24.map</file>
+            <file>$TOOLKIT_DIR$\src\template\cfgm328p.xcl</file>
+            <file>$TOOLKIT_DIR$\lib\dlib\dlAVR-3s-ec_mul-sf-n.r90</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Threads.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\ycheck.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Product.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\stdlib.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\xencoding_limits.h</file>
+            <file>$PROJ_DIR$\files\nrf24.d90</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\string.h</file>
+            <file>$PROJ_DIR$\nrf24.out\nrf24l01.r90</file>
+            <file>$PROJ_DIR$\nrf24.out\nrf24l01.pbi</file>
+            <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
+            <file>$TOOLKIT_DIR$\inc\ioavr.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\stdbool.h</file>
+            <file>$PROJ_DIR$\adc.h</file>
+            <file>$PROJ_DIR$\pulse_main.c</file>
+            <file>$PROJ_DIR$\nrf24.out\nrf24.eep</file>
+            <file>$PROJ_DIR$\nrf24.out\nrf24.hex</file>
+            <file>$PROJ_DIR$\nrf24.out\main.r90</file>
+            <file>$PROJ_DIR$\nrf24.out\main.pbi</file>
+            <file>$TOOLKIT_DIR$\inc\iom328p.h</file>
+            <file>$TOOLKIT_DIR$\inc\bitdefinitions\iom328p.inc</file>
+            <file>$TOOLKIT_DIR$\inc\iomacro.h</file>
+            <file>$PROJ_DIR$\files\itoa.r90</file>
+            <file>$PROJ_DIR$\files\dispatcher.r90</file>
+            <file>$PROJ_DIR$\files\kbd.r90</file>
+            <file>$PROJ_DIR$\files\uart.r90</file>
+            <file>$PROJ_DIR$\files\nrf24.r90</file>
+            <file>$TOOLKIT_DIR$\lib\dlib\dlAVR-3s-ec_mul-sf-n.h</file>
+            <file>$TOOLKIT_DIR$\src\template\cfg3soim.xcl</file>
+            <file>$PROJ_DIR$\nrf24.out\itoa.r90</file>
+            <file>$PROJ_DIR$\nrf24.out\nrf24.pbi</file>
+            <file>$PROJ_DIR$\nrf24.out\dispatcher.__cstat.et</file>
+            <file>$PROJ_DIR$\nrf24.out\kbd.pbi</file>
+            <file>$PROJ_DIR$\nrf24.out\dispatcher.pbi</file>
+            <file>$PROJ_DIR$\nrf24.out\dispatcher.r90</file>
+            <file>$PROJ_DIR$\nrf24.out\uart.pbi</file>
+            <file>$PROJ_DIR$\nrf24.out\uart.__cstat.et</file>
+            <file>$PROJ_DIR$\nrf24.out\itoa.pbi</file>
+            <file>$PROJ_DIR$\nrf24.out\kbd.r90</file>
+            <file>$PROJ_DIR$\nrf24.out\uart.r90</file>
+            <file>$PROJ_DIR$\nrf24.out\nrf24.r90</file>
+            <file>$PROJ_DIR$\nrf24.out\nrf24.__cstat.et</file>
+            <file>$PROJ_DIR$\nrf24.out\kbd.__cstat.et</file>
+            <file>$PROJ_DIR$\nrf24.out\itoa.__cstat.et</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\ysizet.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\stddef.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\yvals.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\stdint.h</file>
+        </outputs>
+        <file>
+            <name>[ROOT_NODE]</name>
+            <outputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 17 20 39 38</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\lib\dispatcher.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 57</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 54</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 56</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 1 27 24 69 26 50 25 28 23 67 70 68 15 6 34 42 44 43 33 35 3 5 8 36</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 70 27 67 69 15 24 28 1 33 68 26 23 6 8 36 35 50 25 3 5 34 42 44 43</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\lib\itoa.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 52</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 66</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 60</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 3 70 24 69 26 50 25 28 23</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 24 70 23 69 26 3 28 50 25</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\lib\kbd.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 61</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 65</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 55</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 70 24 69 26 50 25 28 23 5</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 24 23 69 26 70 28 50 25 5</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\lib\uart.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 62</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 59</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 58</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 34 42 44 43 33 70 24 69 26 50 25 28 23 8</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 70 23 33 8 42 44 43 24 26 69 34 28 50 25</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\nrf24.lib\src\nrf24l01.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 31</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 19</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 32</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 27 24 69 26 50 25 28 23 67 35 30 15 6 34 42 44 43 33 70 68 3 1 5 8 36 11 9</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\nrf24.lib\examples\rx\main.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 40</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 41</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 26 23 69 35 24 30 67 28 50 25</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\nrf24.lib\examples\tx\main.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 40</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 41</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\nrf24.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 63</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 64</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 53</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 15 6 34 42 44 43 33 70 24 69 26 50 25 28 23 35 68 67 27 3 1 5 8 36 30 9 11</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 70 36 6 68 42 50 11 8 34 69 24 28 30 1 44 43 25 67 9 3 5 33 35 27 26 23 15</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\nrf24.out\nrf24.d90</name>
+            <outputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 20 39 38</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 21 51 57 52 61 63 31 62 22</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\files\nrf24.d90</name>
+            <inputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 21 51 46 45 47 49 48 22</file>
+                </tool>
+            </inputs>
+        </file>
+        <forcedrebuild>
+            <name>$PROJ_DIR$\nrf24.lib\examples\rx\main.c</name>
+            <tool>ICCAVR</tool>
+        </forcedrebuild>
+        <forcedrebuild>
+            <name>$PROJ_DIR$\nrf24.lib\examples\tx\main.c</name>
+            <tool>ICCAVR</tool>
+        </forcedrebuild>
+        <forcedrebuild>
+            <name>$PROJ_DIR$\nrf24.lib\src\nrf24l01.c</name>
+            <tool>C-STAT</tool>
+        </forcedrebuild>
+        <forcedrebuild>
+            <name>$PROJ_DIR$\nrf24.lib\examples\rx\main.c</name>
+            <tool>C-STAT</tool>
+        </forcedrebuild>
+        <forcedrebuild>
+            <name>$PROJ_DIR$\nrf24.lib\examples\tx\main.c</name>
+            <tool>C-STAT</tool>
+        </forcedrebuild>
+        <forcedrebuild>
+            <name>$PROJ_DIR$\nrf24.c</name>
+            <tool>C-STAT</tool>
+        </forcedrebuild>
+    </configuration>
+    <configuration>
+        <name>Release</name>
+        <outputs />
+        <forcedrebuild>
+            <name>[MULTI_TOOL]</name>
+            <tool>XLINK</tool>
+        </forcedrebuild>
+    </configuration>
+</project>

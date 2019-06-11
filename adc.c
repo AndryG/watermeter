@@ -1,36 +1,36 @@
 #include "adc.h"
 
-// список каналов для пребразования
+// СЃРїРёСЃРѕРє РєР°РЅР°Р»РѕРІ РґР»СЏ РїСЂРµР±СЂР°Р·РѕРІР°РЅРёСЏ
 __flash uint8_t const adcChannel[ADC_CHANNEL_COUNT] = ADC_CHANNEL_LIST;
 
-// последние считанные значения
+// РїРѕСЃР»РµРґРЅРёРµ СЃС‡РёС‚Р°РЅРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ
 uint16_t adcValue[sizeof adcChannel];
 
-// счетчик текущего канала
+// СЃС‡РµС‚С‡РёРє С‚РµРєСѓС‰РµРіРѕ РєР°РЅР°Р»Р°
 static uint8_t chCounter = 0xFF;
 
-/* Инициализация ADC  */
+/* РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ ADC  */
 void adcInit(){
 //  ADMUX = ADC_ADMUX_INIT | adcChanel[0];
   ADCSRA = (1<<ADEN)|(0<<ADSC)|(0<<ADFR)|(1<<ADIF)|(0<<ADIE)|(1<<ADPS2)|(1<<ADPS1)|(0<<ADPS0);
 }
 
-/* запускает серию преобразований */
+/* Р·Р°РїСѓСЃРєР°РµС‚ СЃРµСЂРёСЋ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёР№ */
 void adcStart(){
-  if(0xFF == chCounter){//новая серия преобразований
+  if(0xFF == chCounter){//РЅРѕРІР°СЏ СЃРµСЂРёСЏ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёР№
     chCounter = sizeof adcChannel - 1;
-  }else if(ADCSRA & _BV(ADIF)){//преобразование закончено
+  }else if(ADCSRA & _BV(ADIF)){//РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ Р·Р°РєРѕРЅС‡РµРЅРѕ
     adcValue[chCounter] = ADC;
-    if(0xFF == --chCounter){ // закончилась серия
+    if(0xFF == --chCounter){ // Р·Р°РєРѕРЅС‡РёР»Р°СЃСЊ СЃРµСЂРёСЏ
       qtTask(adcComplete, 0);
       return;
     }
   }else{
     qtTask(adcStart, 0);
-    return; // ожидаем окончания преобразования
+    return; // РѕР¶РёРґР°РµРј РѕРєРѕРЅС‡Р°РЅРёСЏ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ
   }
-  //запуск преобразования на канале по счетчику
+  //Р·Р°РїСѓСЃРє РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ РЅР° РєР°РЅР°Р»Рµ РїРѕ СЃС‡РµС‚С‡РёРєСѓ
   ADMUX = ADC_ADMUX_INIT | adcChannel[chCounter];
-  ADCSRA |= bv(ADSC) | bv(ADIF); // запуск преобразования c очисткой флага
+  ADCSRA |= bv(ADSC) | bv(ADIF); // Р·Р°РїСѓСЃРє РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ c РѕС‡РёСЃС‚РєРѕР№ С„Р»Р°РіР°
   qtTask(adcStart, 0);
 }

@@ -419,7 +419,6 @@ Purpose:  called when the UART is ready to transmit the next byte
 **************************************************************************/
 {
     unsigned char tmptail;
-
     if ( UART_TxHead != UART_TxTail) {
         /* calculate and store new buffer index */
         tmptail = (UART_TxTail + 1) & UART_TX_BUFFER_MASK;

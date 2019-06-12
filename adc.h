@@ -3,8 +3,6 @@
 
 // периодическое считывание ADC с нескольких каналов
 
-#include CONFIG_FILE
-
 #ifndef ADC_CHANNEL_LIST
   #error "Not defined ADC_CHANNEL_LIST - list channels for adc converting {CH_1, CH_2,...}"
 #endif

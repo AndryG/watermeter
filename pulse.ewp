@@ -436,7 +436,7 @@
                 </option>
                 <option>
                     <name>PreInclude</name>
-                    <state></state>
+                    <state>$PROJ_DIR$\pulse-conf.h</state>
                 </option>
                 <option>
                     <name>CCOverrideModuleTypeDefault</name>
@@ -1099,10 +1099,10 @@
         <name>$PROJ_DIR$\disk3a.c</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\pulse.c</name>
+        <name>$PROJ_DIR$\pulse-conf.h</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\pulse_config.h</name>
+        <name>$PROJ_DIR$\pulse.c</name>
     </file>
     <file>
         <name>$PROJ_DIR$\pwm.c</name>

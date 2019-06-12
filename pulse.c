@@ -1,5 +1,3 @@
-#include CONFIG_FILE
-
 volatile uint8_t flag;
 #define F_TICK        0x01 // системный тик
 #define F_SNR_READY   0x02 // таймер "данные сенсора  готовы"

@@ -76,6 +76,8 @@
             <file>$TOOLKIT_DIR$\inc\dlib\c\stddef.h</file>
             <file>$TOOLKIT_DIR$\inc\dlib\c\yvals.h</file>
             <file>$TOOLKIT_DIR$\inc\dlib\c\stdint.h</file>
+            <file>$PROJ_DIR$\pulse.ewt</file>
+            <file>$PROJ_DIR$\pulse.ewd</file>
         </outputs>
         <file>
             <name>[ROOT_NODE]</name>
@@ -109,7 +111,7 @@
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 70 27 67 69 15 24 28 1 33 68 26 23 6 8 36 35 50 25 3 5 34 42 44 43</file>
+                    <file> 25 26 24 67 27 69 68 28 70 35 50 1 23</file>
                 </tool>
             </inputs>
         </file>
@@ -215,6 +217,10 @@
                     <name>ICCAVR</name>
                     <file> 27 24 69 26 50 25 28 23 67 35 30 15 6 34 42 44 43 33 70 68 3 1 5 8 36 11 9</file>
                 </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 24 70 43 28 67 35 50 1 44 30 9 25 6 8 36 34 68 42 15 11 69 26 23 3 5 33 27</file>
+                </tool>
             </inputs>
         </file>
         <file>
@@ -272,7 +278,7 @@
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 70 36 6 68 42 50 11 8 34 69 24 28 30 1 44 43 25 67 9 3 5 33 35 27 26 23 15</file>
+                    <file> 3 27 26 23 11 33 24 69 30 5 35 67 28 70 9 6 1 8 36 34 68 42 44 43 50 25 15</file>
                 </tool>
             </inputs>
         </file>

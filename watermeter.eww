@@ -6,5 +6,8 @@
     <project>
         <path>$WS_DIR$\pulse.ewp</path>
     </project>
+    <project>
+        <path>$WS_DIR$\wtrm.ewp</path>
+    </project>
     <batchBuild />
 </workspace>

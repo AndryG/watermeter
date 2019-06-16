@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <fileVersion>2</fileVersion>
+    <fileChecksum>2257538825</fileChecksum>
+    <configuration>
+        <name>Debug</name>
+        <outputs>
+            <file>$TOOLKIT_DIR$\lib\dlib\dlAVR-1s-ec_mul-n.h</file>
+            <file>$PROJ_DIR$\wtrm.out\wtrm.d90</file>
+            <file>$PROJ_DIR$\wtrm.out\wtrm.pbd</file>
+            <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
+            <file>$TOOLKIT_DIR$\inc\ioavr.h</file>
+            <file>$PROJ_DIR$\wtrm.out\wtrm.r90</file>
+            <file>$PROJ_DIR$\wtrm.out\dispatcher.r90</file>
+            <file>$PROJ_DIR$\wtrm.out\kbd.r90</file>
+            <file>$PROJ_DIR$\wtrm.out\uart.r90</file>
+            <file>$PROJ_DIR$\wtrm.out\dispatcher.pbi</file>
+            <file>$PROJ_DIR$\wtrm.out\kbd.pbi</file>
+            <file>$PROJ_DIR$\wtrm.out\wtrm.pbi</file>
+            <file>$PROJ_DIR$\wtrm.out\uart.pbi</file>
+            <file>$TOOLKIT_DIR$\inc\iom8.h</file>
+            <file>$TOOLKIT_DIR$\inc\bitdefinitions\iom8.inc</file>
+            <file>$TOOLKIT_DIR$\inc\iomacro.h</file>
+            <file>$PROJ_DIR$\wtrm.out\wtrm.hex</file>
+            <file>$PROJ_DIR$\wtrm.out\wtrm.eep</file>
+            <file>$TOOLKIT_DIR$\src\template\cfgm8.xcl</file>
+            <file>$TOOLKIT_DIR$\lib\dlib\dlAVR-1s-ec_mul-n.r90</file>
+            <file>$TOOLKIT_DIR$\src\template\cfg1soim.xcl</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\yvals.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\stdlib.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\xencoding_limits.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Product.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\stdint.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\ysizet.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\stdbool.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Threads.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\ycheck.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\stddef.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
+            <file>$PROJ_DIR$\lib\dispatcher.c</file>
+            <file>$PROJ_DIR$\lib\dispatcher.h</file>
+            <file>$PROJ_DIR$\lib\kbd.c</file>
+            <file>$PROJ_DIR$\lib\kbd.h</file>
+            <file>$PROJ_DIR$\lib\lib.h</file>
+            <file>$PROJ_DIR$\lib\uart.c</file>
+            <file>$PROJ_DIR$\lib\uart.h</file>
+            <file>$PROJ_DIR$\wtrm-conf.h</file>
+            <file>$PROJ_DIR$\wtrm.c</file>
+            <file>$PROJ_DIR$\wtrm.out\wtrm.__cstat.et</file>
+            <file>$PROJ_DIR$\wtrm.out\uart.__cstat.et</file>
+            <file>$PROJ_DIR$\wtrm.out\dispatcher.__cstat.et</file>
+            <file>$PROJ_DIR$\wtrm.out\kbd.__cstat.et</file>
+        </outputs>
+        <file>
+            <name>$PROJ_DIR$\wtrm.out\wtrm.d90</name>
+            <outputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 16 17</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 18 20 6 7 8 5 19</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\lib\dispatcher.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 6</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 43</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 9</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 39 36 4 13 15 14 3 25 29 21 31 0 24 23 28 27 30 26 22 33 38 35</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 24 31 29 26 22 21 30 23 25 27 0 33 28</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\lib\kbd.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 7</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 44</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 10</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 39 36 4 13 15 14 3 25 29 21 31 0 24 23 28 27 30 26 22 33 38 35</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 29 28 21 31 25 23 0 24 35</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\lib\uart.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 8</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 42</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 12</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 39 36 4 13 15 14 3 25 29 21 31 0 24 23 28 27 30 26 22 33 38 35</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 27 29 35 3 33 22 21 0 25 38 4 30 13 15 14 23 24 26 36 31 28</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\wtrm.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 5</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 41</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 11</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 39 36 4 13 15 14 3 25 29 21 31 0 24 23 28 27 30 26 22 33 38 35</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 29 27 35 33 3 22 21 0 25 38 4 30 13 15 14 23 24 26 36 31 28</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>[ROOT_NODE]</name>
+            <outputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 1 16 17</file>
+                </tool>
+            </outputs>
+        </file>
+    </configuration>
+    <configuration>
+        <name>Release</name>
+        <outputs />
+        <forcedrebuild>
+            <name>[MULTI_TOOL]</name>
+            <tool>XLINK</tool>
+        </forcedrebuild>
+    </configuration>
+</project>

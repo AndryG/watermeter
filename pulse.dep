@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <fileVersion>2</fileVersion>
+    <fileChecksum>349914815</fileChecksum>
+    <configuration>
+        <name>Debug</name>
+        <outputs>
+            <file>$PROJ_DIR$\pulse.out\pulse.d90</file>
+            <file>$PROJ_DIR$\pulse.out\pwm.pbi</file>
+            <file>$PROJ_DIR$\pulse.out\pulse_main.pbi</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\stdlib.h</file>
+            <file>$PROJ_DIR$\pulse_main.c</file>
+            <file>$PROJ_DIR$\pulse.out\disk3a.pbi</file>
+            <file>$PROJ_DIR$\pulse.out\pulse.pbd</file>
+            <file>$PROJ_DIR$\pulse.out\disk3a.r90</file>
+            <file>$PROJ_DIR$\pulse.out\uart.r90</file>
+            <file>$PROJ_DIR$\pulse.out\adc.r90</file>
+            <file>$PROJ_DIR$\pulse.out\pulse_main.r90</file>
+            <file>$PROJ_DIR$\pulse.out\pwm.r90</file>
+            <file>$PROJ_DIR$\pulse.out\itoa.r90</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\stddef.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\stdint.h</file>
+            <file>$PROJ_DIR$\wtrm.c</file>
+            <file>$PROJ_DIR$\pulse.c</file>
+            <file>$PROJ_DIR$\pulse-conf.h</file>
+            <file>$TOOLKIT_DIR$\lib\dlib\dlAVR-1s-ec_mul-n.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\ycheck.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\xencoding_limits.h</file>
+            <file>$TOOLKIT_DIR$\lib\dlib\dlAVR-1s-ec_mul-n.r90</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Threads.h</file>
+            <file>$PROJ_DIR$\disk.c</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\yvals.h</file>
+            <file>$PROJ_DIR$\pwm.c</file>
+            <file>$PROJ_DIR$\disk3a.c</file>
+            <file>$TOOLKIT_DIR$\src\template\cfgm8.xcl</file>
+            <file>$PROJ_DIR$\lib\itoa.c</file>
+            <file>$PROJ_DIR$\adc.h</file>
+            <file>$PROJ_DIR$\lib\uart.h</file>
+            <file>$PROJ_DIR$\adc.c</file>
+            <file>$PROJ_DIR$\lib\itoa.h</file>
+            <file>$PROJ_DIR$\lib\dispatcher.h</file>
+            <file>$PROJ_DIR$\lib\uart.c</file>
+            <file>$PROJ_DIR$\lib\kbd.h</file>
+            <file>$PROJ_DIR$\lib\lib.h</file>
+            <file>$PROJ_DIR$\lib\dispatcher.c</file>
+            <file>$PROJ_DIR$\lib\kbd.c</file>
+            <file>$PROJ_DIR$\pulse.out\pulse.pbi</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Product.h</file>
+            <file>$PROJ_DIR$\pulse_config.h</file>
+            <file>$PROJ_DIR$\pulse.out\pulse.r90</file>
+            <file>$PROJ_DIR$\pulse.out\dispatcher.pbi</file>
+            <file>$PROJ_DIR$\pulse.out\uart.pbi</file>
+            <file>$PROJ_DIR$\pulse.out\itoa.pbi</file>
+            <file>$PROJ_DIR$\pulse.out\dispatcher.r90</file>
+            <file>$PROJ_DIR$\pulse.out\adc.pbi</file>
+            <file>$PROJ_DIR$\pulse.out\kbd.pbi</file>
+            <file>$PROJ_DIR$\pulse.out\kbd.r90</file>
+            <file>$TOOLKIT_DIR$\src\template\cfg1soim.xcl</file>
+            <file>$TOOLKIT_DIR$\inc\bitdefinitions\iom8.inc</file>
+            <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
+            <file>$TOOLKIT_DIR$\inc\ioavr.h</file>
+            <file>$TOOLKIT_DIR$\inc\iomacro.h</file>
+            <file>$PROJ_DIR$\pulse.out\pulse.hex</file>
+            <file>$PROJ_DIR$\pulse.out\pulse.eep</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\ysizet.h</file>
+            <file>$TOOLKIT_DIR$\inc\iom8.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\stdbool.h</file>
+        </outputs>
+        <file>
+            <name>$PROJ_DIR$\pulse.out\pulse.d90</name>
+            <outputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 56 57</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 28 51 9 7 47 12 50 43 11 8 22</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\pulse_main.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 10</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 2</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 42 54 59 55 52 53 14 19 25 20 18 41 21 23 60 33 34 3 58 13 36 31 30</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 14 36 59 19 54 33 55 25 18 42 58 53 60 34 31 30 21 41 52 20 23 3 13</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>[ROOT_NODE]</name>
+            <outputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 0 56 57</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\pulse.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 43</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 40</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 17 54 59 55 52 53 14 19 25 20 18 41 21 23 60 33 34 3 58 13 36 31 30</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 60 30 31 25 18 58 53 34 19 54 14 33 36 59 55 52 21 41 20 23 3 13</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\pwm.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 11</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 1</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 17 54 59 55 52 53 14 19 25 20 18 41 21 23 60 33 34 3 58 13 36 31 30</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 30 60 31 25 18 58 53 34 19 54 14 33 36 59 55 52 21 41 20 23 3 13</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\disk3a.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 7</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 5</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 17 54 59 55 52 53 14 19 25 20 18 41 21 23 60 33 34 3 58 13 36 31 30</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 18 58 30 25 60 31 53 34 19 54 14 33 36 59 55 52 21 41 20 23 3 13</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\lib\itoa.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 12</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 46</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 17 54 59 55 52 53 14 19 25 20 18 41 21 23 60 33 34 3 58 13 36 31 30</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 30 60 31 3 25 53 34 23 21 54 14 33 36 59 55 52 19 20 13 18 41 58</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\adc.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 9</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 48</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 17 54 59 55 52 53 14 19 25 20 18 41 21 23 60 33 34 3 58 13 36 31 30</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 30 60 31 3 25 53 34 23 21 54 14 33 36 59 55 52 19 20 13 18 41 58</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\lib\uart.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 8</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 45</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 17 54 59 55 52 53 14 19 25 20 18 41 21 23 60 33 34 3 58 13 36 31 30</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 30 25 14 60 31 53 34 19 20 13 54 33 36 59 55 52 23 3 21 18 41 58</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\lib\dispatcher.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 47</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 44</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 17 54 59 55 52 53 14 19 25 20 18 41 21 23 60 33 34 3 58 13 36 31 30</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 19 30 25 60 31 20 13 53 34 14 54 33 36 59 55 52 23 3 21 18 41 58</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\lib\kbd.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 50</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 49</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 17 54 59 55 52 53 14 19 25 20 18 41 21 23 60 33 34 3 58 13 36 31 30</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 30 3 25 60 31 53 34 23 21 54 14 33 36 59 55 52 19 20 13 18 41 58</file>
+                </tool>
+            </inputs>
+        </file>
+        <forcedrebuild>
+            <name>$PROJ_DIR$\disk.c</name>
+            <tool>ICCAVR</tool>
+        </forcedrebuild>
+    </configuration>
+</project>

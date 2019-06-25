@@ -3,11 +3,11 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <stddef.h>
-#include "../config.h"
+#include <stdbool.h>
 
 // размер очереди задач (в штуках)
 #ifndef QT_TASK_COUNT
-  #error not defined QT_TASK_COUNT
+  #error Need define QT_TASK_COUNT
 #endif
 
 // тип для задержки выполнения. Можно увеличить директивой QT_DELAY_SIZE_16 (по ум. 8 бит)
@@ -28,7 +28,7 @@ typedef void(*qtTaskPtr)(void);
 extern void qtDecrementDelay(void);
 extern qtDelay qtDecrementDelay2(qtDelay tick);
 extern void qtDispatch(void);
-extern uint8_t qtDispatch2(void);
+extern bool qtDispatch2(void);
 extern void qtInit(void);
 extern void qtTask(qtTaskPtr ptr, qtDelay tick);
 

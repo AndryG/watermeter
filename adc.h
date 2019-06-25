@@ -1,9 +1,7 @@
 #ifndef __ADC_H
 #define __ADC_H
 
-// периодическое считывание ADC с нескольких каналов
-
-#include "config.h"
+// РїРµСЂРёРѕРґРёС‡РµСЃРєРѕРµ СЃС‡РёС‚С‹РІР°РЅРёРµ ADC СЃ РЅРµСЃРєРѕР»СЊРєРёС… РєР°РЅР°Р»РѕРІ
 
 #ifndef ADC_CHANNEL_LIST
   #error "Not defined ADC_CHANNEL_LIST - list channels for adc converting {CH_1, CH_2,...}"
@@ -13,10 +11,10 @@
 #error "Not defined ADC_ADMUX_INIT"
 #endif
 
-// список каналов для пребразования
+// СЃРїРёСЃРѕРє РєР°РЅР°Р»РѕРІ РґР»СЏ РїСЂРµР±СЂР°Р·РѕРІР°РЅРёСЏ
 extern __flash uint8_t const adcChannel[ADC_CHANNEL_COUNT];
 
-// последние считанные значения
+// РїРѕСЃР»РµРґРЅРёРµ СЃС‡РёС‚Р°РЅРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ
 extern  uint16_t adcValue[ADC_CHANNEL_COUNT];
 
 void adcInit();

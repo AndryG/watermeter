@@ -1,3 +1,6 @@
 [submodule "nrf24.lib"]
 	path = nrf24.lib
 	url = https://github.com/antoineleclair/avr-nrf24l01.git
+[submodule "uart.lib"]
+	path = uart.lib
+	url = https://github.com/andygock/avr-uart.git

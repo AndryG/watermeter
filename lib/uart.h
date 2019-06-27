@@ -47,11 +47,11 @@ LICENSE:
  */
 
 
-// #include <avr/pgmspace.h>
+ #include <avr/pgmspace.h>
 
-// #if (__GNUC__ * 100 + __GNUC_MINOR__) < 405
-// #error "This library requires AVR-GCC 4.5 or later, update to newer AVR-GCC compiler !"
-// #endif
+ #if (__GNUC__ * 100 + __GNUC_MINOR__) < 405
+ #error "This library requires AVR-GCC 4.5 or later, update to newer AVR-GCC compiler !"
+ #endif
 
 
 /**@{*/
@@ -178,7 +178,7 @@ extern void uart_puts(const char *s );
  * @return   none
  * @see      uart_puts_P
  */
-extern void uart_puts_p(char __flash *s );
+void uart_puts_p(const char *progmem_s);
 
 /**
  * @brief    Macro to automatically put a string constant into program memory
@@ -200,8 +200,8 @@ extern void uart1_puts(const char *s );
 /** @brief  Put string from program memory to ringbuffer for transmitting via USART1 (only available on selected ATmega) @see uart_puts_p */
 extern void uart1_puts_p(const char *s );
 /** @brief  Macro to automatically put a string constant into program memory */
-//#define uart1_puts_P(__s)       uart1_puts_p(PSTR(__s))
-#define uart1_puts_P(s)        {static __flash char str[] = s; uart1_puts_p(str);}
+#define uart1_puts_P(__s)       uart1_puts_p(PSTR(__s))
+//#define uart1_puts_P(s)        {static __flash char str[] = s; uart1_puts_p(str);}
 
 /**@}*/
 

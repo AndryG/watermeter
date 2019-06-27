@@ -21,7 +21,7 @@ kbd_ts |= temp;                         //добавляем настоящее 
 //Обработка дребезга (имеем тек. сост. в kbd_ts)
 temp = kbd_ts;
 swap(temp);                             //"Настоящее" на месте прошлого
-kbd_ss |= (kbd_ts | temp & 0x0F);       // tsn & tsp
+kbd_ss |= (kbd_ts | (temp & 0x0F));       // tsn & tsp
 kbd_ts = temp & 0xF0;                   //Наст. ставим в "прошлое"
 //Определение состояний кнопок (имеем стаб. сост. в kbd_ss)
 temp = kbd_ss;

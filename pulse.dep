@@ -21,26 +21,6 @@
             <file>$PROJ_DIR$\pulse-conf.h</file>
             <file>$PROJ_DIR$\pulse.c</file>
             <file>$PROJ_DIR$\pwm.c</file>
-            <file>$PROJ_DIR$\pulse.out\pulse.d90</file>
-            <file>$PROJ_DIR$\pulse.out\pwm.pbi</file>
-            <file>$PROJ_DIR$\pulse.out\pulse_main.pbi</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\stdlib.h</file>
-            <file>$PROJ_DIR$\pulse_main.c</file>
-            <file>$PROJ_DIR$\pulse.out\disk3a.pbi</file>
-            <file>$PROJ_DIR$\pulse.out\pulse.pbd</file>
-            <file>$PROJ_DIR$\pulse.out\disk3a.r90</file>
-            <file>$PROJ_DIR$\pulse.out\uart.r90</file>
-            <file>$PROJ_DIR$\pulse.out\adc.r90</file>
-            <file>$PROJ_DIR$\pulse.out\pulse_main.r90</file>
-            <file>$PROJ_DIR$\pulse.out\pwm.r90</file>
-            <file>$PROJ_DIR$\pulse.out\itoa.r90</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\stddef.h</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\stdint.h</file>
-            <file>$TOOLKIT_DIR$\lib\dlib\dlAVR-1s-ec_mul-n.h</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\ycheck.h</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\xencoding_limits.h</file>
-            <file>$TOOLKIT_DIR$\lib\dlib\dlAVR-1s-ec_mul-n.r90</file>
             <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Threads.h</file>
             <file>$TOOLKIT_DIR$\inc\dlib\c\yvals.h</file>
             <file>$TOOLKIT_DIR$\src\template\cfgm8.xcl</file>
@@ -65,13 +45,33 @@
             <file>$TOOLKIT_DIR$\inc\dlib\c\ysizet.h</file>
             <file>$TOOLKIT_DIR$\inc\iom8.h</file>
             <file>$TOOLKIT_DIR$\inc\dlib\c\stdbool.h</file>
+            <file>$PROJ_DIR$\pulse.out\pulse.d90</file>
+            <file>$PROJ_DIR$\pulse.out\pwm.pbi</file>
+            <file>$PROJ_DIR$\pulse.out\pulse_main.pbi</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\stdlib.h</file>
+            <file>$PROJ_DIR$\pulse_main.c</file>
+            <file>$PROJ_DIR$\pulse.out\disk3a.pbi</file>
+            <file>$PROJ_DIR$\pulse.out\pulse.pbd</file>
+            <file>$PROJ_DIR$\pulse.out\disk3a.r90</file>
+            <file>$PROJ_DIR$\pulse.out\uart.r90</file>
+            <file>$PROJ_DIR$\pulse.out\adc.r90</file>
+            <file>$PROJ_DIR$\pulse.out\pulse_main.r90</file>
+            <file>$PROJ_DIR$\pulse.out\pwm.r90</file>
+            <file>$PROJ_DIR$\pulse.out\itoa.r90</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\stddef.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\stdint.h</file>
+            <file>$TOOLKIT_DIR$\lib\dlib\dlAVR-1s-ec_mul-n.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\ycheck.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\xencoding_limits.h</file>
+            <file>$TOOLKIT_DIR$\lib\dlib\dlAVR-1s-ec_mul-n.r90</file>
         </outputs>
         <file>
             <name>[ROOT_NODE]</name>
             <outputs>
                 <tool>
                     <name>XLINK</name>
-                    <file> 55 56 16</file>
+                    <file> 35 36 40</file>
                 </tool>
             </outputs>
         </file>
@@ -80,21 +80,21 @@
             <outputs>
                 <tool>
                     <name>ICCAVR</name>
-                    <file> 46</file>
+                    <file> 26</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 43</file>
+                    <file> 23</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCAVR</name>
-                    <file> 13 53 58 54 51 52 30 32 37 33 31 40 34 36 59 3 1 19 57 29 5 8 10</file>
+                    <file> 13 33 38 34 31 32 54 56 17 57 55 20 58 16 39 3 1 43 37 53 5 8</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 32 10 37 59 8 33 29 52 1 30 53 3 5 58 54 51 36 19 34 31 40 57</file>
+                    <file> 17 10 55 39 8 32 1 33 54 3 5 38 34 31 56 58 20 43 57 16 53 37</file>
                 </tool>
             </inputs>
         </file>
@@ -103,7 +103,99 @@
             <outputs>
                 <tool>
                     <name>ICCAVR</name>
+                    <file> 52</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 25</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 13 33 38 34 31 32 54 56 17 57 55 20 58 16 39 3 1 43 37 53 5 8</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 10 58 56 39 8 20 32 1 54 37 33 3 5 38 34 31 17 55 57 16 43 53</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\lib\kbd.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 29</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
                     <file> 28</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 13 33 38 34 31 32 54 56 17 57 55 20 58 16 39 3 1 43 37 53 5 8</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 10 56 39 8 32 1 17 55 37 33 54 3 5 38 34 31 58 20 57 16 43 53</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\lib\uart.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 48</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 24</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 13 33 38 34 31 32 54 56 17 57 55 20 58 16 39 3 1 43 37 53 5 8</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 39 10 8 17 55 37 32 1 56 54 33 3 5 38 34 31 58 20 57 16 43 53</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\adc.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 49</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 27</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 13 33 38 34 31 32 54 56 17 57 55 20 58 16 39 3 1 43 37 53 5 8</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 17 10 39 8 54 32 1 56 57 53 33 3 5 38 34 31 16 43 58 55 20 37</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\disk3a.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 47</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
@@ -113,103 +205,11 @@
             <inputs>
                 <tool>
                     <name>ICCAVR</name>
-                    <file> 13 53 58 54 51 52 30 32 37 33 31 40 34 36 59 3 1 19 57 29 5 8 10</file>
+                    <file> 13 33 38 34 31 32 54 56 17 57 55 20 58 16 39 3 1 43 37 53 5 8</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 10 59 8 19 37 52 1 36 34 53 30 3 5 58 54 51 32 33 29 31 40 57</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\lib\kbd.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCAVR</name>
-                    <file> 49</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 48</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCAVR</name>
-                    <file> 13 53 58 54 51 52 30 32 37 33 31 40 34 36 59 3 1 19 57 29 5 8 10</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 10 19 37 59 8 52 1 36 34 53 30 3 5 58 54 51 32 33 29 31 40 57</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\lib\uart.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCAVR</name>
-                    <file> 24</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 44</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCAVR</name>
-                    <file> 13 53 58 54 51 52 30 32 37 33 31 40 34 36 59 3 1 19 57 29 5 8 10</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 10 37 30 59 8 52 1 32 33 29 53 3 5 58 54 51 36 19 34 31 40 57</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\adc.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCAVR</name>
-                    <file> 25</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 47</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCAVR</name>
-                    <file> 13 53 58 54 51 52 30 32 37 33 31 40 34 36 59 3 1 19 57 29 5 8 10</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 10 59 8 19 37 52 1 36 34 53 30 3 5 58 54 51 32 33 29 31 40 57</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\disk3a.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCAVR</name>
-                    <file> 23</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 21</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCAVR</name>
-                    <file> 13 53 58 54 51 52 30 32 37 33 31 40 34 36 59 3 1 19 57 29 5 8 10</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 31 57 10 37 59 8 52 1 32 53 30 3 5 58 54 51 34 40 33 36 19 29</file>
+                    <file> 56 10 39 8 54 37 32 1 58 20 33 3 5 38 34 31 17 55 57 16 43 53</file>
                 </tool>
             </inputs>
         </file>
@@ -218,21 +218,21 @@
             <outputs>
                 <tool>
                     <name>ICCAVR</name>
-                    <file> 42</file>
+                    <file> 22</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 39</file>
+                    <file> 19</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCAVR</name>
-                    <file> 13 53 58 54 51 52 30 32 37 33 31 40 34 36 59 3 1 19 57 29 5 8 10</file>
+                    <file> 13 33 38 34 31 32 54 56 17 57 55 20 58 16 39 3 1 43 37 53 5 8</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 59 10 8 37 31 57 52 1 32 53 30 3 5 58 54 51 34 40 33 36 19 29</file>
+                    <file> 10 39 8 16 58 32 1 43 17 33 54 3 5 38 34 31 56 57 53 55 20 37</file>
                 </tool>
             </inputs>
         </file>
@@ -241,21 +241,21 @@
             <outputs>
                 <tool>
                     <name>ICCAVR</name>
-                    <file> 27</file>
+                    <file> 51</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 17</file>
+                    <file> 41</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCAVR</name>
-                    <file> 13 53 58 54 51 52 30 32 37 33 31 40 34 36 59 3 1 19 57 29 5 8 10</file>
+                    <file> 13 33 38 34 31 32 54 56 17 57 55 20 58 16 39 3 1 43 37 53 5 8</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 10 59 8 37 31 57 52 1 32 53 30 3 5 58 54 51 34 40 33 36 19 29</file>
+                    <file> 10 57 53 39 8 56 17 32 1 54 33 3 5 38 34 31 16 43 58 55 20 37</file>
                 </tool>
             </inputs>
         </file>
@@ -264,13 +264,13 @@
             <outputs>
                 <tool>
                     <name>XLINK</name>
-                    <file> 55 56</file>
+                    <file> 35 36</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>XLINK</name>
-                    <file> 38 50 25 23 46 28 49 42 27 24 35</file>
+                    <file> 18 30 49 47 26 52 29 22 51 48 59</file>
                 </tool>
             </inputs>
         </file>
@@ -279,21 +279,21 @@
             <outputs>
                 <tool>
                     <name>ICCAVR</name>
-                    <file> 26</file>
+                    <file> 50</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 18</file>
+                    <file> 42</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCAVR</name>
-                    <file> 41 53 58 54 51 52 30 32 37 33 31 40 34 36 59 3 1 19 57 29 5 8 10</file>
+                    <file> 21 33 38 34 31 32 54 56 17 57 55 20 58 16 39 3 1 43 37 53 5 8 10</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 30 5 58 32 53 3 54 37 31 41 57 52 59 1 8 10 34 40 51 33 36 19 29</file>
+                    <file> 54 5 38 56 33 3 34 17 55 21 37 32 39 1 8 10 58 20 31 57 16 43 53</file>
                 </tool>
             </inputs>
         </file>

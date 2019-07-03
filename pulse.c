@@ -16,20 +16,20 @@ void kbdProcess();
 
 int main(){
   init();
-  __enable_interrupt();
+  sei();
   while(1){
     if(flag & F_TICK){
       flag &= ~F_TICK;
-      PORTD_Bit4 ^= 1;
+      PORTD ^= _BV(4);
       qtDecrementDelay2(1);
     }
     if(flag & F_SNR_READY){
       flag &= ~F_SNR_READY;
       uint8_t impuls = dskAutomat(snrValue);
       if(impuls){
-        PORTD_Bit7 = 1;
-        delay_ms(50);
-        PORTD_Bit7 = 0;
+        PORTD |= _BV(7);
+        _delay_ms(50);
+        PORTD &= _BV(7);
       }
 #if MODE == M_SNR
       snrReady();

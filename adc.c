@@ -1,7 +1,7 @@
 #include "adc.h"
 
 // список каналов для пребразования
-__flash uint8_t const adcChannel[ADC_CHANNEL_COUNT] = ADC_CHANNEL_LIST;
+uint8_t const adcChannel[ADC_CHANNEL_COUNT] = ADC_CHANNEL_LIST;
 
 // последние считанные значения
 uint16_t adcValue[sizeof adcChannel];
@@ -31,6 +31,6 @@ void adcStart(){
   }
   //запуск преобразования на канале по счетчику
   ADMUX = ADC_ADMUX_INIT | adcChannel[chCounter];
-  ADCSRA |= bv(ADSC) | bv(ADIF); // запуск преобразования c очисткой флага
+  ADCSRA |= _BV(ADSC) | _BV(ADIF); // запуск преобразования c очисткой флага
   qtTask(adcStart, 0);
 }

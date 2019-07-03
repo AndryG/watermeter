@@ -5,9 +5,22 @@
     <configuration>
         <name>Debug</name>
         <outputs>
+            <file>$PROJ_DIR$\lib\dispatcher.c</file>
+            <file>$PROJ_DIR$\lib\dispatcher.h</file>
+            <file>$PROJ_DIR$\lib\kbd.c</file>
+            <file>$PROJ_DIR$\lib\kbd.h</file>
+            <file>$PROJ_DIR$\lib\lib.h</file>
+            <file>$PROJ_DIR$\lib\uart.c</file>
+            <file>$PROJ_DIR$\lib\uart.h</file>
+            <file>$PROJ_DIR$\wtrm-conf.h</file>
+            <file>$PROJ_DIR$\wtrm.c</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
+            <file>$PROJ_DIR$\wtrm.out\wtrm.__cstat.et</file>
+            <file>$PROJ_DIR$\wtrm.out\uart.__cstat.et</file>
+            <file>$PROJ_DIR$\wtrm.out\dispatcher.__cstat.et</file>
+            <file>$PROJ_DIR$\wtrm.out\kbd.__cstat.et</file>
             <file>$TOOLKIT_DIR$\lib\dlib\dlAVR-1s-ec_mul-n.h</file>
             <file>$PROJ_DIR$\wtrm.out\wtrm.d90</file>
-            <file>$PROJ_DIR$\wtrm.out\wtrm.pbd</file>
             <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
             <file>$TOOLKIT_DIR$\inc\ioavr.h</file>
             <file>$PROJ_DIR$\wtrm.out\wtrm.r90</file>
@@ -36,60 +49,40 @@
             <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Threads.h</file>
             <file>$TOOLKIT_DIR$\inc\dlib\c\ycheck.h</file>
             <file>$TOOLKIT_DIR$\inc\dlib\c\stddef.h</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
-            <file>$PROJ_DIR$\lib\dispatcher.c</file>
-            <file>$PROJ_DIR$\lib\dispatcher.h</file>
-            <file>$PROJ_DIR$\lib\kbd.c</file>
-            <file>$PROJ_DIR$\lib\kbd.h</file>
-            <file>$PROJ_DIR$\lib\lib.h</file>
-            <file>$PROJ_DIR$\lib\uart.c</file>
-            <file>$PROJ_DIR$\lib\uart.h</file>
-            <file>$PROJ_DIR$\wtrm-conf.h</file>
-            <file>$PROJ_DIR$\wtrm.c</file>
-            <file>$PROJ_DIR$\wtrm.out\wtrm.__cstat.et</file>
-            <file>$PROJ_DIR$\wtrm.out\uart.__cstat.et</file>
-            <file>$PROJ_DIR$\wtrm.out\dispatcher.__cstat.et</file>
-            <file>$PROJ_DIR$\wtrm.out\kbd.__cstat.et</file>
         </outputs>
         <file>
-            <name>$PROJ_DIR$\wtrm.out\wtrm.d90</name>
+            <name>[ROOT_NODE]</name>
             <outputs>
                 <tool>
                     <name>XLINK</name>
-                    <file> 16 17</file>
+                    <file> 29 30 15</file>
                 </tool>
             </outputs>
-            <inputs>
-                <tool>
-                    <name>XLINK</name>
-                    <file> 18 20 6 7 8 5 19</file>
-                </tool>
-            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\lib\dispatcher.c</name>
             <outputs>
                 <tool>
                     <name>ICCAVR</name>
-                    <file> 6</file>
+                    <file> 19</file>
                 </tool>
                 <tool>
                     <name>__cstat</name>
-                    <file> 43</file>
+                    <file> 12</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 9</file>
+                    <file> 22</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCAVR</name>
-                    <file> 39 36 4 13 15 14 3 25 29 21 31 0 24 23 28 27 30 26 22 33 38 35</file>
+                    <file> 7 4 17 26 28 27 16 38 42 34 9 14 37 36 41 40 43 39 35 1 6 3</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 24 31 29 26 22 21 30 23 25 27 0 33 28</file>
+                    <file> 37 9 42 39 35 34 43 36 38 40 14 1 41</file>
                 </tool>
             </inputs>
         </file>
@@ -98,25 +91,25 @@
             <outputs>
                 <tool>
                     <name>ICCAVR</name>
-                    <file> 7</file>
+                    <file> 20</file>
                 </tool>
                 <tool>
                     <name>__cstat</name>
-                    <file> 44</file>
+                    <file> 13</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 10</file>
+                    <file> 23</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCAVR</name>
-                    <file> 39 36 4 13 15 14 3 25 29 21 31 0 24 23 28 27 30 26 22 33 38 35</file>
+                    <file> 7 4 17 26 28 27 16 38 42 34 9 14 37 36 41 40 43 39 35 1 6 3</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 29 28 21 31 25 23 0 24 35</file>
+                    <file> 42 41 34 9 38 36 14 37 3</file>
                 </tool>
             </inputs>
         </file>
@@ -125,25 +118,25 @@
             <outputs>
                 <tool>
                     <name>ICCAVR</name>
-                    <file> 8</file>
+                    <file> 21</file>
                 </tool>
                 <tool>
                     <name>__cstat</name>
-                    <file> 42</file>
+                    <file> 11</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 12</file>
+                    <file> 25</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCAVR</name>
-                    <file> 39 36 4 13 15 14 3 25 29 21 31 0 24 23 28 27 30 26 22 33 38 35</file>
+                    <file> 7 4 17 26 28 27 16 38 42 34 9 14 37 36 41 40 43 39 35 1 6 3</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 27 29 35 3 33 22 21 0 25 38 4 30 13 15 14 23 24 26 36 31 28</file>
+                    <file> 40 42 3 16 1 35 34 14 38 6 17 43 26 28 27 36 37 39 4 9 41</file>
                 </tool>
             </inputs>
         </file>
@@ -152,36 +145,42 @@
             <outputs>
                 <tool>
                     <name>ICCAVR</name>
-                    <file> 5</file>
+                    <file> 18</file>
                 </tool>
                 <tool>
                     <name>__cstat</name>
-                    <file> 41</file>
+                    <file> 10</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 11</file>
+                    <file> 24</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCAVR</name>
-                    <file> 39 36 4 13 15 14 3 25 29 21 31 0 24 23 28 27 30 26 22 33 38 35</file>
+                    <file> 7 4 17 26 28 27 16 38 42 34 9 14 37 36 41 40 43 39 35 1 6 3</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 29 27 35 33 3 22 21 0 25 38 4 30 13 15 14 23 24 26 36 31 28</file>
+                    <file> 42 40 3 1 16 35 34 14 38 6 17 43 26 28 27 36 37 39 4 9 41</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>[ROOT_NODE]</name>
+            <name>$PROJ_DIR$\wtrm.out\wtrm.d90</name>
             <outputs>
                 <tool>
                     <name>XLINK</name>
-                    <file> 1 16 17</file>
+                    <file> 29 30</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 31 33 19 20 21 18 32</file>
+                </tool>
+            </inputs>
         </file>
     </configuration>
     <configuration>

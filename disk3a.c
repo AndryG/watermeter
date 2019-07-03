@@ -14,7 +14,7 @@ static u8 prevState;
    A 001 B 100 C 010 A
    3  1  5  4  6  2  3
 */
-static __flash u8 route[7][8] = {
+static u8 route[7][8] = {
 //      0     1     2     3     4     5     6     7 вх. символ
     {0x00, 0x00, 0x00, 0x01, 0x00, 0x02, 0x03, 0x00}, // 0 z
     {0x00, 0x01, 0x01, 0x01, 0x04, 0x82, 0x01, 0x04}, // 1 A 3
@@ -66,7 +66,7 @@ u8 dskAutomat(u8 ch){
     dd += 1;
 
 
-  if(prevState != s & 0x0F){ // StateChanged
+  if(prevState != (s & 0x0F)){ // StateChanged
 
   }else{ //предыдущее состояние
 

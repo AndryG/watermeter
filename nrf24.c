@@ -1,9 +1,3 @@
-#include CONFIG_FILE
-
-/*#include <avr/io.h>
-#include <avr/interrupt.h>
-#include <stdbool.h>
-#include <util/delay.h>*/
 #include <string.h>
 #include "nrf24.lib/src/nrf24l01-mnemonics.h"
 #include "nrf24.lib/src/nrf24l01.h"
@@ -25,9 +19,9 @@ int main_tx(void);
 
 
 void main(void){
-  PORTD_Bit7 = 1;
+  PORTD |= _BV(7);
   prepare_led_pin();
-  if(PIND_Bit7){
+  if(PIND & _BV(7)){
     main_tx();
   }else{
     main_rx();
@@ -37,7 +31,7 @@ void main(void){
 int main_rx(void) {
     uint8_t address[5] = { 0x01, 0x01, 0x01, 0x01, 0x01 };
     prepare_led_pin();
-    __enable_interrupt();
+    sei();
     nRF24L01 *rf = setup_rf();
     nRF24L01_listen(rf, 0, address);
     uint8_t addr[5];
@@ -60,7 +54,7 @@ int main_rx(void) {
 int main_tx(void) {
     uint8_t to_address[5] = { 0x01, 0x01, 0x01, 0x01, 0x01 };
     bool on = false;
-    __enable_interrupt();
+    sei();
     nRF24L01 *rf = setup_rf();
     setup_timer();
 
@@ -102,8 +96,8 @@ nRF24L01 *setup_rf(void) {
     rf->miso.port = &PORTB;
     rf->miso.pin = PB4;
     // interrupt on falling edge of INT0 (PD2)
-    EICRA |= _BV(ISC01);
-    EIMSK |= _BV(INT0);
+    MCUCR |= _BV(ISC01);
+	GICR |= _BV(INT0);
     nRF24L01_begin(rf);
     return rf;
 }
@@ -131,20 +125,18 @@ inline void set_led_low(void) {
 // setup timer to trigger interrupt every second when at 1MHz
 void setup_timer(void) {
     TCCR1B |= _BV(WGM12);
-    TIMSK1 |= _BV(OCIE1A);
+    TIMSK |= _BV(OCIE1A);
     OCR1A = 0x1E83;//0x3D08;
     TCCR1B |= _BV(CS10) | _BV(CS11);
 }
 
 // each one second interrupt
-#pragma vector=TIMER1_COMPA_vect
-__interrupt void TIMER1_COMPA(void){
+ISR(TIMER1_COMPA_vect) {
    int_timer = true;
 }
 
 // nRF24L01 interrupt
-#pragma vector=INT0_vect
-__interrupt void tINT0(void) {
+ISR(INT0_vect){
     rf_interrupt = true;
 }
 

@@ -1,6 +1,5 @@
 #include "snr.h"
 
-
 static snrVal_t snrvAllValues[2][2];
 
 snrVal_t (*snrVal)[2]            = &snrvAllValues[0]; // текущие для обработки значения

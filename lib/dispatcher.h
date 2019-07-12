@@ -25,11 +25,11 @@
 // указатель на функцию задачи
 typedef void(*qtTaskPtr)(void);
 
-extern void qtDecrementDelay(void);
-extern qtDelay qtDecrementDelay2(qtDelay tick);
-extern void qtDispatch(void);
-extern bool qtDispatch2(void);
-extern void qtInit(void);
-extern void qtTask(qtTaskPtr ptr, qtDelay tick);
+void qtDecrementDelay(void);
+//extern qtDelay qtDecrementDelay2(qtDelay tick);
+void qtDispatch(void);
+bool qtDispatch2(void);
+void qtInit(void);
+void qtTask(qtTaskPtr ptr, qtDelay tick);
 
 #endif

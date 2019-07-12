@@ -80,9 +80,8 @@ void qtDispatch(void){
   }
 }
 
-/**
- Выполняет одну задачу из очереди "активные задачи" и возращает подтверждениие выполнения
- @return bool
+/* Выполняет одну задачу из очереди "активные задачи"
+ * Возращает true, если задача была и false  в случае пустой очереди
  */
 bool qtDispatch2(void){
   if(active.h){
@@ -108,7 +107,8 @@ void qtDecrementDelay(void){
  Одно выполнение функции активирует лишь одну пачку заданий - на ближайшее время.
  Основная программма может выполнять функцию в цикле, пока она не вернет 0 -
   это активирует все задачи, для которых пришло время.
- */
+  @deprecated ФИГНЯ ЭТО ВСЁ. Можно успешно в основном коде в цикле вызывать qtDecrementDelay сколько надо раз и все дела
+ * /
 qtDelay qtDecrementDelay2(qtDelay tick){
   if(delay.h){
     qtDelay tmp = delay.h->delay;
@@ -123,7 +123,7 @@ qtDelay qtDecrementDelay2(qtDelay tick){
     }
   }
   return 0;
-}
+}*/
 
 static void head2tail(Queue *q1, Queue *q2){
   if(q2->t == NULL){

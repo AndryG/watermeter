@@ -1,18 +1,25 @@
 #ifndef SNR_H
 #define SNR_H
 
-typedef struct snrVal_t {
-  u8 state;
-} snrVal_t;
+/* Начало считывания датчика 0
+ */
+void snr_begin0(u8 ledPower0);
 
-extern snrVal_t (*snrVal)[2];
+/* Начало считывания датчика 1
+ */
+void snr_begin1(u8 ledPower1);
 
-extern void snrBegin(u8 chMask, u8 ledPower0, u8 ledPower1);
+/* Чтение цифровых значений с датчиков канала 0
+ */
+u8 snr_readCh0();
 
-extern void snrReadD(u8 chMask);
+/* Чтение цифровых значений с датчиков канала 1
+ */
+u8 snr_readCh1();
 
-extern void snrOff();
-
-extern void snrSwapValues();
+/* Отключение считывателя. Перевод в режим мин. потребления сразу оба канала.
+ * Даже если канал не используется, все равно линии нужно перевести в режим мин. потребления
+ */
+void snr_off();
 
 #endif

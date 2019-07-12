@@ -169,8 +169,8 @@ void t2_initOcrMode(u8 ticks){
 
 #define TC0_RELOAD (F_CPU / 1000000ul * 496 / 8) //todo: вынести задержку (в us) конфиг
 
-#if T0_RELOAD > 0x100
- #error T0_RELOAD overflow
+#if TC0_RELOAD > 0x100
+ #error TC0_RELOAD overflow
 #endif
 
 /* Старт отсчета "разогрева" фотодиода (0,5мс)

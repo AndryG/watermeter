@@ -3,15 +3,28 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Atmel Studio Solution File, Format Version 11.00
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "wtrm", "wtrm.cproj", "{DCE6C7E3-EE26-4D79-826B-08594B9AD897}"
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "adcsnr", "adcsnr\adcsnr.cproj", "{C84C617C-36BD-4EDE-86E6-92FBDCF92F27}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "wtrm", "wtrm\wtrm.cproj", "{DCE6C7E3-EE26-4D79-826B-08594B9AD897}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		wtrm-s|AVR = wtrm-s|AVR
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+		wtrm|AVR = wtrm|AVR
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.wtrm-s|AVR.ActiveCfg = wtrm|AVR
-		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.wtrm-s|AVR.Build.0 = wtrm|AVR
+		{C84C617C-36BD-4EDE-86E6-92FBDCF92F27}.Debug|AVR.ActiveCfg = Debug|AVR
+		{C84C617C-36BD-4EDE-86E6-92FBDCF92F27}.Release|AVR.ActiveCfg = Release|AVR
+		{C84C617C-36BD-4EDE-86E6-92FBDCF92F27}.Release|AVR.Build.0 = Release|AVR
+		{C84C617C-36BD-4EDE-86E6-92FBDCF92F27}.wtrm|AVR.ActiveCfg = Debug|AVR
+		{C84C617C-36BD-4EDE-86E6-92FBDCF92F27}.wtrm|AVR.Build.0 = Debug|AVR
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Debug|AVR.ActiveCfg = wtrm|AVR
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Debug|AVR.Build.0 = wtrm|AVR
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Release|AVR.ActiveCfg = wtrm|AVR
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Release|AVR.Build.0 = wtrm|AVR
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.wtrm|AVR.ActiveCfg = wtrm|AVR
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.wtrm|AVR.Build.0 = wtrm|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

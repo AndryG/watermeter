@@ -3,5 +3,6 @@
 *.log
 /.vs
 /wtrm/*
+/adcsnr/*
 ~$*.xls*
 /*.componentinfo.xml

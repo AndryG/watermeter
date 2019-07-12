@@ -5,7 +5,7 @@ volatile u8 isr;
 #define isr_T0    1
 #define isr_NRF   2
 
-tp2_ticks_t ticks;
+tick_t ticks;
 
 ch_t ch[2];
 
@@ -17,13 +17,13 @@ void blink();
 void tc0_start();
 void sensorTask();
 
-void dbgSend(u8 ext){
-  char buf[5];
-  uart_puts(itoa16(ch[0].sensor, buf));
-  uart_putc(','); uart_puts(itoa16(ch[1].sensor, buf));
-  uart_putc(','); uart_puts(itoa16(ext, buf));
-  uart_putc('\r');
-}
+ void dbgSend(u8 ext){
+//   char buf[5];
+//   uart_puts(itoa16(ch[0].sensor, buf));
+//   uart_putc(','); uart_puts(itoa16(ch[1].sensor, buf));
+//   uart_putc(','); uart_puts(itoa16(ext, buf));
+//   uart_putc('\r');
+ }
 
 void main(){
   init();
@@ -59,7 +59,7 @@ tc0_start();
 	DDRD |= bv(PD2);    // debug line
   qtTask(&blink, 0);
 
-	uart_init(UART_BAUD_RATE);
+//	uart_init(UART_BAUD_RATE);
   t2_initOcrMode(1);
 }
 

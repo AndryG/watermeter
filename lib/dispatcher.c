@@ -35,7 +35,7 @@ void qtTask(qtTaskPtr ptr, qtDelay tick){
   Task *r = empty.h; // Rec - эта запись окажется в хвосте delay/active
 
   if(r == NULL){ // нет свободных записей. Приплыли.
-    exit(QT_QUEUE_OVERFLOW_CODE);
+//    exit(QT_QUEUE_OVERFLOW_CODE);
   }
 
   Task *oldTail = delay.t;

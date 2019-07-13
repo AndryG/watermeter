@@ -1,10 +1,9 @@
 #pragma once
-
 #include <util/atomic.h>
 #include <avr/pgmspace.h>
 #include <avr/sleep.h>
 
-#define F_CPU	1000000UL
+#define F_CPU	8000000UL
 
 #include "lib.h"
 #include "hal.h"
@@ -59,8 +58,9 @@ typedef struct ch_s {
 //TODO добавить ADC_ADPS предделитель тактовой частоты ADCSRA[2:0]
 //#include "adc.h"
 
-#define UART_BAUD_RATE    UART_BAUD_SELECT_DOUBLE_SPEED(38400, F_CPU)
-#define UART_RX0_BUFFER_SIZE 0
+//#define UART_BAUD_RATE    UART_BAUD_SELECT_DOUBLE_SPEED(38400, F_CPU)
+#define UART_BAUD_RATE    UART_BAUD_SELECT(38400, F_CPU)
+#define UART_RX0_BUFFER_SIZE 8
 #define UART_TX0_BUFFER_SIZE 64
 #include "uart.lib/uart.h"
 

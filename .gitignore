@@ -1,7 +1,8 @@
 /*.out
 *.bak
 *.log
+/wtrm/Debug
 /.vs
-/wtrm/*
 ~$*.xls*
-/*.componentinfo.xml
+*.componentinfo.xml
+/m328/Debug

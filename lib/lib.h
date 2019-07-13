@@ -5,7 +5,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <avr/interrupt.h>
-#include <util/delay.h>
+//#include <util/delay.h>
 
 typedef uint8_t   u8;
 typedef int8_t    i8;
@@ -17,7 +17,7 @@ typedef int32_t   i32;
 //#define delay_us(us)     __delay_cycles((F_CPU / 1000000) * (us));
 //#define delay_ms(ms)     __delay_cycles((F_CPU / 1000) * (ms));
 
-#define delay_ms(x)		_delay_ms(x)
+//#define delay_ms(x)		_delay_ms(x)
 
 #define bv(x)   _BV(x)
 

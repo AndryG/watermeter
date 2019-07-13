@@ -1,3 +1,5 @@
+﻿
+
 
 /** Флаги прерываний */
 volatile u8 isr;
@@ -13,6 +15,8 @@ void main() __attribute__((noreturn));
 void init();
 void t2_initOcrMode(u8 ticks);
 void t2_setOCRandWait(u8 ticks);
+void t2_setOVFandWait(u8 ticks);
+void t2_initOvfMode(u8 ticks);
 void blink();
 void tc0_start();
 void sensorTask();
@@ -25,17 +29,28 @@ void dbgSend(u8 ext){
   uart_putc('\r');
 }
 
+void my_exit (u16 code) __attribute__ ((naked)) __attribute__ ((section (".fini8")));
+void my_exit (u16 code){
+
+}
+
 void main(){
   init();
   sei();
+
+  uart_putc(0xa5);
   while(1){
+
     if(isr & bv(isr_T0)){
-      qtTask(&sensorTask, 0); // Задача отвечает за сброс флага после обработки
+    //  qtTask(&sensorTask, 0); // Задача отвечает за сброс флага после обработки
     }
     if(isr & bv(isr_TICK)){
       isr &= ~bv(isr_TICK);
-      t2_setOCRandWait(1);
+      t2_setOVFandWait(2);
+      //delay_ms(50);
+      t2_setOVFandWait(3);
       ticks += 1;
+      PORTB ^= 1;
       qtDecrementDelay();
     }
     if(!qtDispatch2()){
@@ -53,15 +68,104 @@ void main(){
  Начальная настройка. Запускается единожды при старте программы
  */
 void init(){
-tc0_start();
 	qtInit();
-
+  DDRB = 0xff;
 	DDRD |= bv(PD2);    // debug line
   qtTask(&blink, 0);
 
 	uart_init(UART_BAUD_RATE);
-  t2_initOcrMode(1);
+  t2_initOvfMode(0);
+//  t2_initOcrMode(1);
 }
+
+/* признак занятости T2 */
+bool t2_isBusy(){
+  return (ASSR & (bv(TCN2UB) | bv(OCR2UB) | bv(TCR2UB))) != 0;
+}
+
+void t2_setOCRandWait(u8 ticks){
+//  OCR2 += 32768uL / 128ul / (1 << TP2_BY_SEC) * ticks - 1;
+ //OCR2 += 0x80;
+  return;
+  while(t2_isBusy()){
+    //while
+  }
+}
+//void my_exit (u8) __attribute__ ((naked)) __attribute__ ((section (".fini8")));
+void t2_setOVFandWait(u8 ticks){
+  //TCNT2 = 0xff + 1 - 32768uL / 128ul / (1 << TP2_BY_SEC) * ticks;
+  TCNT2 -= 32768uL / 128ul / (1 << TP2_BY_SEC) * ticks;
+  while(t2_isBusy()){
+    //while
+  }
+}
+
+ISR(TIMER2_COMP_vect){
+  isr |= bv(isr_TICK);
+//  t2_setOCRandWait(0);
+  PORTB ^= 1;
+}
+
+ISR(TIMER2_OVF_vect){
+  isr |= bv(isr_TICK);
+  PORTB ^= 2;
+}
+
+void t2_initOcrMode(u8 ticks){
+  ATOMIC_BLOCK(ATOMIC_RESTORESTATE){
+    ASSR  = bv(AS2);
+    TCNT2 = OCR2 = 0;
+    TCCR2 = 0x05; // div 128 макс период 1s
+    t2_setOCRandWait(ticks);
+    TIFR |= bv(OCF2);
+    TIMSK|= bv(OCIE2);
+    TIMSK|= bv(TOIE2);
+  }
+}
+
+void t2_initOvfMode(u8 ticks){
+  ATOMIC_BLOCK(ATOMIC_RESTORESTATE){
+    ASSR  = bv(AS2);
+    TCCR2 = 0x05; // div 128 макс период 1s
+    t2_setOVFandWait(ticks);
+    TIFR |= bv(TOV2);
+    TIMSK|= bv(TOIE2);
+  }
+}
+
+
+#define TC0_RELOAD (F_CPU / 1000000ul * 496 / 8) //todo: вынести задержку (в us) конфиг
+
+#if T0_RELOAD > 0x100
+ #error T0_RELOAD overflow
+#endif
+
+/* Старт отсчета "разогрева" фотодиода (0,5мс)
+ */
+void tc0_start(){
+  TCNT0 = 0xFF - TC0_RELOAD + 1;
+  SFIOR |= bv(PSR10);
+  TCCR0 = 0x02; // div 8  Делитель поменьше, чтобы уменьшить влияние предделителя
+  TIFR |= bv(TOV0);
+  TIMSK|= bv(TOIE0);
+}
+
+void blink(){
+  PORTD ^= bv(PD2);
+  qtTask(&blink, 1 << (TP2_BY_SEC - 2));
+}
+
+ISR(INT1_vect){
+  isr |= bv(isr_NRF);
+}
+
+
+
+ISR(TIMER0_OVF_vect){
+  TCCR0 = 0x00; // останов счетчика
+  isr |= bv(isr_T0);
+}
+
 
 //#define chTestTp2(ch) ((ch).status < 2 && ((ch).status = tp2_test(ticks, (ch).tp2)))
 //bool chTestTp2(ch_t ch){ return (ch.status < 2 && (ch.status = tp2_test(ticks, ch.tp2)))};
@@ -84,6 +188,12 @@ void sensorTask(){
   static u8 state = 0; // состояние автомата
 
   while(1){ // цикл для возможности внутреннего перепрыгивания по состояниям без рекурсии
+    if((isr & bv(isr_T0)) && state != 2){
+      while(1){
+        PORTB |= 0x02;
+      }
+    }
+
     switch(state){
       u8 hasActive = false;
       case 0: // инициализация и перескок на "начало"
@@ -134,6 +244,7 @@ void sensorTask(){
         dbgSend(0);
         channelProcess(&ch[0]);
         channelProcess(&ch[1]);
+        state = 9;
         break;
 
       case 9: // планирование след. запуска
@@ -142,63 +253,6 @@ void sensorTask(){
         return;
     }
   }
-}
-
-/* признак занятости T2 */
-inline bool t2_isBusy(){
-  return (ASSR & (bv(TCN2UB) | bv(OCR2UB) | bv(TCR2UB))) != 0;
-}
-
-void t2_setOCRandWait(u8 ticks){
-  OCR2 += 32768uL / 128ul / (1 << TP2_BY_SEC) * ticks - 1;
-  while(t2_isBusy()){
-    //while
-  }
-}
-
-void t2_initOcrMode(u8 ticks){
-  ATOMIC_BLOCK(ATOMIC_RESTORESTATE){
-    ASSR  = bv(AS2);
-    TCNT2 = OCR2 = 0;
-    TCCR2 = 0x05; // div 128 макс период 1s
-    t2_setOCRandWait(ticks);
-	  TIFR |= bv(OCF2);
-	  TIMSK|= bv(OCIE2);
-  }
-}
-
-#define TC0_RELOAD (F_CPU / 1000000ul * 496 / 8) //todo: вынести задержку (в us) конфиг
-
-#if TC0_RELOAD > 0x100
- #error TC0_RELOAD overflow
-#endif
-
-/* Старт отсчета "разогрева" фотодиода (0,5мс)
- */
-void tc0_start(){
-  TCNT0 = 0xFF + 1 - TC0_RELOAD;
-  SFIOR |= bv(PSR10);
-  TCCR0 = 0x02; // div 8  Делитель поменьше, чтобы уменьшить влияние предделителя
-  TIFR |= bv(TOV0);
-  TIMSK|= bv(TOIE0);
-}
-
-void blink(){
-  PORTD ^= bv(PD2);
-  qtTask(&blink, 1 << (TP2_BY_SEC - 1));
-}
-
-ISR(INT1_vect){
-  isr |= bv(isr_NRF);
-}
-
-ISR(TIMER2_COMP_vect){
-  isr |= bv(isr_TICK);
-}
-
-ISR(TIMER0_OVF_vect){
-  TCCR0 = 0x00; // останов счетчика
-  isr |= bv(isr_T0);
 }
 
 /*

@@ -1,15 +1,15 @@
 #include "tp2.h"
 
-static inline tp2_ticks_t tp2_mask(uint8_t Tp2){
+static inline tick_t tp2_mask(uint8_t Tp2){
   return (1 << Tp2) - 1;
 }
 
-bool tp2_test(tp2_ticks_t ticks, uint8_t Tp2){
+bool tp2_test(tick_t ticks, uint8_t Tp2){
   return (ticks & tp2_mask(Tp2)) == 0;
 }
 
-tp2_ticks_t tp2_calcDelay(tp2_ticks_t ticks, uint8_t Tp2){
-  tp2_ticks_t n = 0;
+tick_t tp2_calcDelay(tick_t ticks, uint8_t Tp2){
+  tick_t n = 0;
   Tp2 = tp2_mask(Tp2);
   while(1){
     ticks += 1; n+= 1;
@@ -19,8 +19,8 @@ tp2_ticks_t tp2_calcDelay(tp2_ticks_t ticks, uint8_t Tp2){
   }
 }
 
-tp2_ticks_t tp2_calcDelay2(tp2_ticks_t ticks, uint8_t Tp2A, uint8_t Tp2B){
-  tp2_ticks_t n = 0;
+tick_t tp2_calcDelay2(tick_t ticks, uint8_t Tp2A, uint8_t Tp2B){
+  tick_t n = 0;
   Tp2A = tp2_mask(Tp2A);
   Tp2B = tp2_mask(Tp2B);
   while(1){

@@ -3,6 +3,7 @@
 *.log
 /wtrm/Debug
 /.vs
+/adcsnr/*
 ~$*.xls*
 *.componentinfo.xml
 /m328/Debug

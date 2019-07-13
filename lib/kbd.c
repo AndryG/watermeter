@@ -10,7 +10,10 @@ unsigned char kbd_ss    = 0xFF;         //Стабильные состояни�
 #define KBD_TIME_S          2
 #define KBD_TIME_L          10
 
+#ifndef swap
 #define swap(A) A = (A<<4)|(A>>4)       //SWAP SWAP SWAP SWAP SWAP
+//#define swap(x) __asm__ __volatile__ ("swap %0" : "=r" (value) : "0" (value));
+#endif
 //#define swap(A) #asm("SWAP R17");
 
 void kbd_process(unsigned char st){

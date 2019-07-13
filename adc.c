@@ -7,12 +7,13 @@ uint8_t const adcChannel[ADC_CHANNEL_COUNT] = ADC_CHANNEL_LIST;
 uint16_t adcValue[sizeof adcChannel];
 
 // счетчик текущего канала
-static uint8_t chCounter = 0xFF;
+static uint8_t chCounter = 0xff;
 
 /* Инициализация ADC  */
 void adcInit(){
+  chCounter = 0xff;
 //  ADMUX = ADC_ADMUX_INIT | adcChanel[0];
-  ADCSRA = (1<<ADEN)|(0<<ADSC)|(0<<ADFR)|(1<<ADIF)|(0<<ADIE)|(1<<ADPS2)|(1<<ADPS1)|(0<<ADPS0);
+  ADCSR = 1 << ADEN | 0 << ADSC | 0<<ADFR | 1 << ADIF | 0 << ADIE | 1<<ADPS2 | 1<<ADPS1 |  0<<ADPS0 ;
 }
 
 /* запускает серию преобразований */

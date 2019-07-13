@@ -1,4 +1,4 @@
-﻿
+
 
 
 /** Флаги прерываний */
@@ -7,7 +7,7 @@ volatile u8 isr;
 #define isr_T0    1
 #define isr_NRF   2
 
-tp2_ticks_t ticks;
+tick_t ticks;
 
 ch_t ch[2];
 
@@ -22,11 +22,11 @@ void tc0_start();
 void sensorTask();
 
 void dbgSend(u8 ext){
-  char buf[5];
-  uart_puts(itoa16(ch[0].sensor, buf));
-  uart_putc(','); uart_puts(itoa16(ch[1].sensor, buf));
-  uart_putc(','); uart_puts(itoa16(ext, buf));
-  uart_putc('\r');
+//   char buf[5];
+//   uart_puts(itoa16(ch[0].sensor, buf));
+//   uart_putc(','); uart_puts(itoa16(ch[1].sensor, buf));
+//   uart_putc(','); uart_puts(itoa16(ext, buf));
+//   uart_putc('\r');
 }
 
 void my_exit (u16 code) __attribute__ ((naked)) __attribute__ ((section (".fini8")));
@@ -73,7 +73,7 @@ void init(){
 	DDRD |= bv(PD2);    // debug line
   qtTask(&blink, 0);
 
-	uart_init(UART_BAUD_RATE);
+//	uart_init(UART_BAUD_RATE);
   t2_initOvfMode(0);
 //  t2_initOcrMode(1);
 }

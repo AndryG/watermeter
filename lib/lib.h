@@ -1,10 +1,13 @@
 #pragma once
-#include <avr/io.h>
 #include <stdint.h>
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdlib.h>
 #include <avr/interrupt.h>
+#include <avr/io.h>
+#include <avr/pgmspace.h>
+#include <avr/sleep.h>
+#include <util/atomic.h>
 //#include <util/delay.h>
 
 typedef uint8_t   u8;
@@ -33,4 +36,6 @@ inline static void iop_asInput(volatile u8 *port, u8 mask) {
   volatile uint8_t *ddr = port - 1;
   *ddr &= ~mask;
 }
+
+#define swap(x) __asm__ __volatile__ ("swap %0" : "=r" (x) : "0" (x))
 

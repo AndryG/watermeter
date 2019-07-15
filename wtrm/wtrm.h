@@ -1,13 +1,9 @@
 #pragma once
-#include <util/atomic.h>
-#include <avr/pgmspace.h>
-#include <avr/sleep.h>
 
 #define F_CPU	8000000UL
 
-#include "lib.h"
-#include "hal.h"
-#include "itoa.h"
+#include "../lib/lib.h"
+#include "../common/hal.h"
 
 /* "tp2" период равный 1 секунде
  * Чтобы получить к-во тиков - возведи двойку в степень: 1 << tp2_bysec
@@ -24,7 +20,7 @@
 // Максимально допустимое DS (к-во считываний между импульсами /50% 180°/) до замедления опроса
 #define DS_RANGE_MAX  ((1 << TP2_BY_SEC) * 3)
 
-
+// status chanells
 #define CH_ACTIVE 0
 #define CH_WAIT   1 // wait (активный, но не в этом тике)
 #define CH_ZERO   2 // dzs DurationZeroState превысил порог
@@ -44,36 +40,5 @@ typedef struct ch_s {
   u8 ds;
 } ch_t;
 
-#include "disk.h"
-
-#define	QT_TASK_COUNT	    10
-
-//#define QT_DELAY_SIZE_16
-#include "dispatcher.h"
-
-// Серия АЦП считываний по списку каналов мультиплексора
-#define ADC_CHANNEL_COUNT   3
-#define ADC_CHANNEL_LIST    {0, 1, 2}
-#define ADC_ADMUX_INIT      ((0<<REFS1)|(1<<REFS0)|(0<<ADLAR))
-//TODO добавить ADC_ADPS предделитель тактовой частоты ADCSRA[2:0]
-//#include "adc.h"
-
-//#define UART_BAUD_RATE    UART_BAUD_SELECT_DOUBLE_SPEED(38400, F_CPU)
-#define UART_BAUD_RATE    UART_BAUD_SELECT(38400, F_CPU)
-#define UART_RX0_BUFFER_SIZE 8
-#define UART_TX0_BUFFER_SIZE 64
-#include "uart.lib/uart.h"
-
-//#include "nrf24.lib/src/nrf24l01.h"
-
-
-
-#include "snr.h"
-
-#include "tp2.h"
-
-#define DBG_OK            0
-#define DBG_LOST_ISR      1
-
-
+#define	QT_TASK_COUNT	    12
 

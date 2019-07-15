@@ -1,8 +1,20 @@
-#pragma once
+#ifndef COMMON_H
+#define COMMON_H
 
-#include "lib.h"
-#include "itoa.h"
+#ifndef TP2_BY_SEC
+  #error Not define TP2_BY_SEC;
+#endif
+
+#include "../lib/dispatcher.h"
+
+#include "../lib/lib.h"
+#include "../lib/itoa.h"
+
 #include "hal.h"
+
+#define UART_BAUD_RATE    UART_BAUD_SELECT(38400, F_CPU)
+//#define UART_BAUD_RATE    UART_BAUD_SELECT_DOUBLE_SPEED(76800, F_CPU)
+#include "../uart.lib/uart.h"
 
 /* “ип дл€ счетчика тиков
  */
@@ -14,7 +26,10 @@ extern volatile u8 isr;
 #define isr_T0    1
 #define isr_NRF   2
 
-//extern tick_t ticks;
+/* ћакрос дл€ указывани€ TP2 периода относительно TP2_BY_SEC. TP2_BY_SEC - 2  = 1/2^2 = 0,25сек
+ * ћакрос следит за переполнением значени€. ¬озращает ноль (каждый тик), если указано очень сильное уменьшение
+ */
+#define TP2_SUB(x)    (TP2_BY_SEC > (x) ? TP2_BY_SEC - (x) : 0)
 
 /* Cчитает min к-во тиков до соблюдени€ услови€ T2p
  * Tp2[] - TimePower2 - указание интервала "каждый 2^Tp2 тик" степенью двойки
@@ -30,9 +45,9 @@ tick_t tp2_calcDelay2(tick_t ticks, uint8_t Tp2A, uint8_t Tp2B);
 bool tp2_test(tick_t ticks, uint8_t Tp2);
 
 
-void t2_initOcrMode(u8 ticks);
+void t2_setOvfAndWait(u8 ticks);
 
-void t2_setOCRandWait(u8 ticks);
+void t2_initOvfMode(u8 ticks);
 
 void blink();
 
@@ -59,5 +74,9 @@ u8 snr_readCh1();
  */
 void snr_off();
 
-/* признак зан€тости T2 */
-bool t2_isBusy();
+#define led_init()    (IOP_DDR(LED_PORT) |= bv(LED_PIN))
+
+void led_blink();
+
+
+#endif

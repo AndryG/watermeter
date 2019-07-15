@@ -13,4 +13,14 @@
 #define SNR_CH1_OUT   PC5
 #define SNR_CH1_LED   PD6 // PD6-PD7
 
+#define LED_PORT      PORTD
+#define LED_PIN       PD2
+
+
+// поломался автомат sensorTask
+#define E_SENSOR_TASK_1   1
+#define E_QT_OVERFLOW     9
+
+#define QT_QUEUE_OVERFLOW_CODE  E_QT_OVERFLOW
+
 #endif

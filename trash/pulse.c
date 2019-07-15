@@ -357,3 +357,211 @@ __interrupt void TIMER1_COMPA(){
   }
 }   */
 
+
+
+
+void t2_initOcrMode(u8 ticks){
+  ATOMIC_BLOCK(ATOMIC_RESTORESTATE){
+    ASSR  = bv(AS2);
+    TCNT2 = OCR2 = 0;
+    TCCR2 = 0x05; // div 128 макс период 1s
+    t2_setOCRandWait(ticks);
+    TIFR |= bv(OCF2);
+    TIMSK|= bv(OCIE2);
+    TIMSK|= bv(TOIE2);
+  }
+}
+
+void t2_setOCRandWait(u8 ticks){
+  //  OCR2 += 32768uL / 128ul / (1 << TP2_BY_SEC) * ticks - 1;
+  //OCR2 += 0x80;
+  return;
+  while(t2_isBusy()){
+    //while
+  }
+}
+
+
+/*
+const u8 PROGMEM 67*-7ByDelim[3] = {4, 8, 4};
+
+void processSensorStep1(){
+  volatile u8 ticks = pgm_read_byte(t2_ticksByDelim + (TCCR2 & 0x03));
+  // анализ цифровых результатов
+  snrReadD(ticks);
+//  sensorProcessing(&ch[0]);
+//  snrAutomat(ch[1]);
+}
+
+/*
+ * Индекс периода таймера планировщика
+ * К-во тиков по индексу периода 1 << Ti
+ * 0 - 0.25Hz 1 tick
+ * 1 - 0.50Hz 2 tick
+ * 2 - 1.00Hz 4 tick
+ */
+
+//inline u8 t2_getTi(){
+  //return (TCCR2 & 0x07) - 3;
+//}
+
+/*
+ * Установка таймера
+ */
+//inline void t2_setTi(u8 Ti){
+  //TCCR2 &= ~0x07;
+  //TCCR2 |= 5 - Ti;
+//}
+
+
+/*
+#define T2_1Hz  5
+#define T2_2Hz  4
+#define T2_4Hz  3
+/* Включение/переключение асинхронного режима T2
+ * Делитель 3/4/5 32/64/128 4/2/1 Гц
+ * /
+void t2_initDelimMode(u8 clockSelect){
+  ATOMIC_BLOCK(ATOMIC_RESTORESTATE){
+    ASSR = (AS2 << 1);
+    TCCR2 = clockSelect & 0x07;
+    while(t2_isBusy()){
+      // wait
+    }
+	  TIFR |= bv(1 << OCF2);
+    TIMSK |= bv(1<<TOIE2);
+  }
+}*/
+
+  //TIMSK = (1 << OCIE2) | (1 << TOIE2) | (1 << TICIE1) | (1 << OCIE1A) | (1 << OCIE1B) | (1 << TOIE1) | (1 << TOIE0)
+
+  // таймер2 для отсчета планировщика
+  //TIMSK  = (1 << OCIE2) | (0 << TOIE2) | (0 << TICIE1) | (0 << OCIE1A) | (0 << OCIE1B) | (0 << TOIE1) | (0 << TOIE0);
+  //ASSR  = (1 << AS2) | (0 << TCN2UB) | (0 << OCR2UB) | (0 << TCR2UB);
+  //TCCR2 = (0 << FOC2) | (0 << COM21) | (0 << COM20) | (0 << WGM21) | (0 << WGM20) | (1 << CS22) | (1 << CS21) | (1 << CS20);
+  //TCNT2 = 0x00;
+  //OCR2  = 0x00;
+
+
+  //	TCCR1B = (0 << WGM13) | (0 << ICNC1) | (0 << ICES1) | (0 << WGM12) | (0 << CS12) | (1 << CS11) | (0 << CS10); // таймер
+  //	TIMSK |= bv(OCIE1A);
+
+
+
+
+
+// static const u8 route[7][4] PROGMEM = {
+// //    0     1     2     3      вх. символ
+//   {0x00, 0x01, 0x02, 0x00}, // 0 начальное состояние
+//   {0x00, 0x02, 0x04, 0x03}, // 1 s0-вход (первая 1)
+//   {0x00, 0x02, 0x04, 0x03}, // 2 s0-повтор ( послед. 1)
+//   {0x00, 0x02, 0x04, 0x03}, // 3 s0-промежуточный (послед. 3)
+//   {0x00, 0x01, 0x05, 0x06}, // 4 s1-вход (первая 2)
+//   {0x00, 0x01, 0x05, 0x06}, // 5 s1-повтор ( послед. 2)
+//   {0x00, 0x01, 0x05, 0x06}, // 6 s1-промежуточный (послед. 3)
+// };
+//
+// void channelProcess(ch_t *ch){
+//   if(0 != ch->status){
+//     return;
+//   }
+//   ch->state = pgm_read_byte(&route[ch->state][ch->sensor]);
+//   switch(ch->state){
+//     case 1:
+//     case 4:
+//       ch->value += 1;
+//       //break
+//     case 0:
+//       ch->ss = 2;
+//       ch->ds = 2;
+//       break;
+//     case 2:
+//     case 5:
+//       if(ch->ss){
+//         ch->ss += 1;
+//       }
+//       //break;
+//     case 3:
+//     case 6:
+//       if(ch->ds){
+//         ch->ds += 1;
+//       }
+//       break;
+//   }
+// }
+
+// Не стал делать отдельный заголовочный файл так-как это неотъемлемая часть проекта.
+// Попробую как оно с меньшим к-во файлов
+
+// предыдущий символ
+//uint8_t dskPrevCh;
+
+// счетчик повторов последнего вх. символа
+//uint8_t dskSameCnt;
+
+//static uint8_t state;
+
+/*
+  011   101   110   011
+   A 001 B 100 C 010 A
+   3  1  5  4  6  2  3
+* /
+static uint8_t route[7][8] = {
+//      0     1     2     3     4     5     6     7 вх. символ
+    {0x00, 0x00, 0x00, 0x01, 0x00, 0x02, 0x03, 0x00}, // 0 z
+    {0x00, 0x01, 0x01, 0x01, 0x04, 0x82, 0x01, 0x04}, // 1 A 3
+    {0x00, 0x02, 0x05, 0x02, 0x02, 0x02, 0x83, 0x05}, // 2 B 5
+    {0x00, 0x06, 0x03, 0x81, 0x03, 0x03, 0x03, 0x06}, // 3 C 6
+    {0x00, 0x04, 0x04, 0x41, 0x04, 0x82, 0x04, 0x04}, // 4 d 4
+    {0x00, 0x05, 0x05, 0x05, 0x05, 0x42, 0x83, 0x05}, // 5 e 2
+    {0x00, 0x06, 0x06, 0x81, 0x06, 0x06, 0x43, 0x06}, // 6 f 1
+};
+
+/*static uint8_t revers[3][3] => {
+  {}, // 0
+  {}, // 1
+  {}, // 2
+};*/
+
+/*
+static uint8_t route[8][8] = {
+//   0  1  2  3  4  5  6  вх. символ
+    {0, 1, 2, 3, 4, 5, 6, 7},  // 0 - 000 обрыв
+    {0, 1, 1, 1, 1, 5, 1, 7},  // 1 - 001 a-b
+    {0, 2, 2, 3, 2, 2, 2, 7},  // 2 - 010 c-a
+    {0, 1, 3, 3, 3, 5, 3, 7},  // 3 - 011 A
+    {0, 4, 4, 4, 4, 4, 6, 7},  // 4 - 100 b-c
+    {0, 5, 5, 5, 4, 5, 6, 7},  // 5 - 101 B
+    {0, 6, 2, 3, 6, 6, 6, 7},  // 6 - 110 C
+    {0, 1, 2, 3, 4, 5, 6, 7},  // 7 - 111 засветка
+};
+
+static bool res[8] = {0, 0, 0, 1, 0, 1, 1, 0};
+
+/* автомат обработки данных датчиков с диска
+ @param три бита состояния счетчика
+ @return к-во принятых импульсов 0 - диск на прежнем состоянии
+* /
+uint8_t dskAutomat(uint8_t ch){
+  uint8_t prev = state;
+  state = route[state][ch];
+  return prev != state;
+}
+/*
+uint8_t dskAutomat2(uint8_t ch){
+  uint8_t prev = state;
+  state = route[state][ch];
+  // считаем повторы вх. симв
+  if(dskPrevCh == ch){
+    dskSameCnt += 1;
+  }else{
+    dskPrevCh  = ch;
+    dskSameCnt = 0;
+  }
+  // был новый символ или нет?
+  if(prev != state){
+    return res[state];
+  }else{
+    return false;
+  }
+}/**/

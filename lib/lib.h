@@ -24,6 +24,9 @@ typedef int32_t   i32;
 
 #define bv(x)   _BV(x)
 
+#define IOP_DDR(port)   (*(volatile u8*)(&(port) - 1))
+#define IOP_PIN(port)   (*(volatile u8*)(&(port) - 2))
+
 //#define iop_asInput(port, mask) *(volatile u8*)(&(port))) |= (mask);
 #define iop_pin(port)   (*(volatile u8*)(&(port) - 2))
 

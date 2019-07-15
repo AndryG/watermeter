@@ -1,6 +1,15 @@
 #include <stdlib.h>
 #include "dispatcher.h"
 
+#ifndef QT_TASK_COUNT
+#define QT_TASK_COUNT         10
+#endif
+
+// Код выхода
+#ifndef QT_QUEUE_OVERFLOW_CODE
+#define QT_QUEUE_OVERFLOW_CODE EXIT_FAILURE
+#endif
+
 typedef struct s_task {
   struct s_task *next;
   qtDelay   delay;
@@ -35,7 +44,7 @@ void qtTask(qtTaskPtr ptr, qtDelay tick){
   Task *r = empty.h; // Rec - эта запись окажется в хвосте delay/active
 
   if(r == NULL){ // нет свободных записей. Приплыли.
-//    exit(QT_QUEUE_OVERFLOW_CODE);
+    exit(QT_QUEUE_OVERFLOW_CODE);
   }
 
   Task *oldTail = delay.t;
@@ -99,31 +108,6 @@ void qtDecrementDelay(void){
     }
   }
 }
-
-/**
- Декремент бОльше, чем один тик.
- Передает на выполнение задачи, которым пришел срок.
- Возращает к-во тиков, которые остались.
- Одно выполнение функции активирует лишь одну пачку заданий - на ближайшее время.
- Основная программма может выполнять функцию в цикле, пока она не вернет 0 -
-  это активирует все задачи, для которых пришло время.
-  @deprecated ФИГНЯ ЭТО ВСЁ. Можно успешно в основном коде в цикле вызывать qtDecrementDelay сколько надо раз и все дела
- * /
-qtDelay qtDecrementDelay2(qtDelay tick){
-  if(delay.h){
-    qtDelay tmp = delay.h->delay;
-    if(tick < tmp){ //мало тиков, время еще не пришло
-      delay.h->delay -= tick;
-    }else{
-      head2tail(&delay, &active); // активируем первую задачу и все с этой пачки
-      while(delay.h && 0 == delay.h->delay){
-        head2tail(&delay, &active);
-      }
-      return tick - tmp; // "оставшиеся" тики
-    }
-  }
-  return 0;
-}*/
 
 static void head2tail(Queue *q1, Queue *q2){
   if(q2->t == NULL){

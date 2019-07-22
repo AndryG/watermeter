@@ -16,7 +16,7 @@ void t2_initOvfMode(u8 ticks){
 
 void t2_setOvfAndWait(u8 ticks){
   //TCNT2 = 0xff + 1 - 32768uL / 128ul / (1 << TP2_BY_SEC) * ticks;
-  TCNT2 -= 32768uL / 128ul / (1 << TP2_BY_SEC) * ticks;
+  TCNT2 -= 32768uL / 128ul / (1 << TP2_BY_SEC) * (ticks - 1);
   while(t2_isBusy()){
     //while
   }

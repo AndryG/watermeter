@@ -7,7 +7,7 @@ void main() __attribute__((noreturn));
 void init();
 
 void adcComplete(){
-  qtTask(adcStart, 1 << (TP2_SUB(4))); // 2^4 раз в секунду
+  qtTask(adcStart, 1);
   char buf[7];
   for(u8 i = 0; i < sizeof(adcChannel); i += 1){
     uart_puts(itoa16(adcValue[i], buf));
@@ -26,6 +26,7 @@ void main(){
       isr &= ~bv(isr_TICK);
       t2_setOvfAndWait(1);
       qtDecrementDelay();
+      LED_PORT ^= bv(LED_PIN);
     }
     qtDispatch2();
   }
@@ -38,5 +39,6 @@ void init(){
   led_init();
 	uart_init(UART_BAUD_RATE);
   t2_initOvfMode(1);
+  adcInit();
   led_blink();
 }

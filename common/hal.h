@@ -13,8 +13,8 @@
 #define SNR_CH1_OUT   PC5
 #define SNR_CH1_LED   PD6 // PD6-PD7
 
-#define LED_PORT      PORTD
-#define LED_PIN       PD2
+#define LED_PORT      PORTB
+#define LED_PIN       PB1
 
 
 // поломался автомат sensorTask

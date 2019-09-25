@@ -17,13 +17,13 @@ void channelProcess(ch_t *ch);
 
 void my_exit (u16 code) __attribute__ ((naked)) __attribute__ ((section (".fini8")));
 void my_exit (u16 code){
-  PORTB = code;
+  //PORTB = code;
 }
 
 void main(){
   init();
   sei();
-  uart_putc(0xa5);
+  uart_puts_P("start\n");
   while(1){
 
     if(isr & bv(isr_T0)){
@@ -52,7 +52,7 @@ void main(){
 void init(){
 	qtInit();
 	led_init();
-	//uart_init(UART_BAUD_RATE);
+	uart_init(UART_BAUD_RATE);
 	t2_initOvfMode(1);
 	led_blink();
 }
@@ -92,8 +92,8 @@ void sensorTask(){
         #endif
         ch[0].tp2 = TP2_BY_SEC - 2; // опрос 4 раза в секунду
         ch[1].tp2 = TP2_BY_SEC - 2;
-        ch[0].ledPower = 2;
-        ch[1].ledPower = 2;
+        ch[0].ledPower = 3;
+        ch[1].ledPower = 3;
         //no-break
 
       case 1: // начало опроса сенсоров

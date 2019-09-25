@@ -1,4 +1,3 @@
-
 #include "../common/common.h"
 #include "adc.h"
 
@@ -13,6 +12,7 @@ void adcComplete(){
     uart_puts(itoa16(adcValue[i], buf));
     uart_putc(' ');
   }
+  uart_puts(itoa16(snr_readCh0(), buf));
   uart_putc('\r');
 }
 
@@ -26,14 +26,11 @@ void main(){
       isr &= ~bv(isr_TICK);
       t2_setOvfAndWait(1);
       qtDecrementDelay();
-      LED_PORT ^= bv(LED_PIN);
     }
     qtDispatch2();
   }
 }
 
-/* Начальная настройка. Запускается единожды при старте программы
- */
 void init(){
 	qtInit();
   led_init();

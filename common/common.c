@@ -15,8 +15,8 @@ void t2_initOvfMode(u8 ticks){
 }
 
 void t2_setOvfAndWait(u8 ticks){
-  //TCNT2 = 0xff + 1 - 32768uL / 128ul / (1 << TP2_BY_SEC) * ticks;
-  TCNT2 -= 32768uL / 128ul / (1 << TP2_BY_SEC) * (ticks - 1);
+  TCNT2 = 0xff + 1 - 32768uL / 128ul / (1 << TP2_BY_SEC) * ticks;
+  //TCNT2 -= 32768uL / 128ul / (1 << TP2_BY_SEC) * (ticks - 1);
   while(t2_isBusy()){
     //while
   }
@@ -125,7 +125,7 @@ void snr_begin0(u8 ledPower0){
   SNR_DDR_IN   &= ~(3 << SNR_CH0_IN);  // вход сенсора
   SNR_PORT_IN  &= ~(3 << SNR_CH0_IN);
 
-  SNR_DDR_LED  |=  ~(3 << SNR_CH0_LED); // включить свет
+  SNR_DDR_LED  |=  (3 << SNR_CH0_LED); // включить свет
   SNR_PORT_LED &=  ~(3 << SNR_CH0_LED);
   SNR_PORT_LED |=  ledPower0 << SNR_CH0_LED;
 }
@@ -169,10 +169,10 @@ void snr_begin1(u8 ledPower1){
 // }
 
 u8 snr_readCh0(){
-  return SNR_PORT_IN >> SNR_CH0_IN & 3;
+  return SNR_PIN_IN >> SNR_CH0_IN & 3;
 }
 u8 snr_readCh1(){
-  return SNR_PORT_IN >> SNR_CH1_IN & 3;
+  return SNR_PIN_IN >> SNR_CH1_IN & 3;
 }
 
 void snr_off(){

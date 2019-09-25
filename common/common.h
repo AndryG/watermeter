@@ -76,6 +76,7 @@ void snr_off();
 
 #define led_init()    (IOP_DDR(LED_PORT) |= bv(LED_PIN))
 
+/** зажигает led на 0,25 сек */
 void led_blink();
 
 
